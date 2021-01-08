@@ -1,47 +1,67 @@
 .m-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 4;
-  background-color: var(--background-color);
-  will-change: transform;
-  @include transition(transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1));
-
-  @include respond-to('medium') {
-    padding: 15px 0;
-  }
-
-  &.mobile-menu-opened {
-    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+    background-color: var(--background-color);
+    will-change: transform;
+    @include transition(transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1));
 
     @include respond-to('medium') {
-      height: auto;
+        padding: 15px 0;
     }
-  }
 
-  &.headroom--pinned {
-    @include bs(0 4px 8px rgba(0, 0, 0, 0.05));
-    @include transform(translateY(0%));
+    &.mobile-menu-opened {
+        height: 100%;
 
-    .m-header__shadow {
-      display: none;
+        @include respond-to('medium') {
+            height: auto;
+        }
     }
-  }
 
-  &.headroom--unpinned {
-    @include transform(translateY(-100%));
-  }
+    &.headroom--pinned {
+        @include bs(0 4px 8px rgba(0, 0, 0, 0.05));
+        @include transform(translateY(0%));
 
-  &.submenu-is-active {
-    background-color: var(--background-color);
-
-    .m-header__shadow {
-      display: none;
+        .m-header__shadow {
+            display: none;
+        }
     }
-  }
 
-  &.with-picture {
-    background-color: var(--background-color);
-  }
+    &.headroom--unpinned {
+        @include transform(translateY(-100%));
+    }
+
+    &.submenu-is-active {
+        background-color: var(--background-color);
+
+        .m-header__shadow {
+            display: none;
+        }
+    }
+
+    &.with-picture {
+        background-color: var(--background-color);
+    }
+}
+
+// dark/light mode support
+
+.m-logo img {
+    filter: invert(1);
+}
+[data-theme='light'] .m-logo img {
+    filter: invert(1);
+}
+[data-theme='dark'] .m-logo img {
+    filter: none;
+}
+@media (prefers-color-scheme: dark) {
+    .m-logo img {
+        filter: none;
+    }
+    [data-theme='light'] .m-logo img {
+        filter: invert(1);
+    }
 }

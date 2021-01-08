@@ -1,5 +1,44 @@
-@import "common/mixins";
-@import "common/variables";
+@import 'common/mixins';
+@import 'common/variables';
 
-@import "components/articles/featured-slider";
-@import "components/articles/featured-article";
+@import 'components/articles/featured-slider';
+@import 'components/articles/featured-article';
+
+// custom home hero
+body.home-template .m-hero {
+    background: url('/assets/images/blog.iota.org-light-mode-header.jpg');
+    background-position: center;
+    min-height: 350px;
+    @include respond-to('medium') {
+        min-height: 530px;
+    }
+    img {
+        display: none !important;
+    }
+}
+
+[data-theme='dark'] body.home-template .m-hero {
+    background: url('/assets/images/blog.iota.org-dark-mode-header.jpg');
+    background-position: center;
+    min-height: 350px;
+    @include respond-to('medium') {
+        min-height: 530px;
+    }
+    img {
+        display: none !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) body.home-template .m-hero {
+        background: url('/assets/images/blog.iota.org-dark-mode-header.jpg');
+        background-position: center;
+        min-height: 350px;
+        @include respond-to('medium') {
+            min-height: 530px;
+        }
+        img {
+            display: none !important;
+        }
+    }
+}

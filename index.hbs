@@ -28,6 +28,7 @@ into the {body} of the default.hbs template --}}
   {{> hero background=@site.cover_image}}
   <div class="m-hero__content" data-aos="fade-down">
     <h1 class="m-hero-title bigger">{{@site.title}}</h1>
+    <div class="headline-stick size-l"></div>
     {{#if @site.description}}
       <p class="m-hero-description bigger">{{@site.description}}</p>
     {{/if}}
@@ -87,8 +88,8 @@ into the {body} of the default.hbs template --}}
                             {{title}}
                           </h2>
                           <div class="m-featured-article__timestamp">
-                            <span>{{date published_at timeago="true"}}</span>
-                            <span>&bull;</span>
+                            <span>{{date published_at}}</span>
+                            <span> </span>
                             <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
                           </div>
                         </a>

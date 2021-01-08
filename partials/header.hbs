@@ -46,7 +46,7 @@ This header template is shared across all the pages.
               {{#if @site.navigation}}
                 {{navigation}}
               {{/if}}
-              {{#if @site.secondary_navigation}}
+              {{!-- {{#if @site.secondary_navigation}}
                 <li class="more">
                   <span>
                     <a href="javascript:void(0);" class="js-open-secondary-menu">
@@ -55,11 +55,12 @@ This header template is shared across all the pages.
                     </a>
                   </span>
                 </li>
-              {{/if}}
+              {{/if}} --}}
               <li class="submenu-option js-submenu-option">
-                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="{{t "Open submenu"}}">
+                <div class="js-toggle-submenu">Recent</div>
+                {{!-- <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="{{t "Open submenu"}}">
                   <span class="icon-more" aria-hidden="true"></span>
-                </button>
+                </button> --}}
                 <div class="m-submenu js-submenu">
                   <div class="l-wrapper in-submenu">
                     <section class="m-recent-articles">

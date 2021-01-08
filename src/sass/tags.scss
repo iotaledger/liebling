@@ -1,6 +1,40 @@
-@import "common/mixins";
-@import "common/variables";
+@import 'common/mixins';
+@import 'common/variables';
 
-@import "layouts/tags-container";
+@import 'layouts/tags-container';
 
-@import "components/tags/tag-card";
+@import 'components/tags/tag-card';
+
+// custom tags hero
+.tags-template .m-hero {
+    background: url('/assets/images/blog.iota.org-light-tag-header.jpg');
+    background-position: center;
+    min-height: 320px;
+    @include respond-to('medium') {
+    }
+    img {
+        display: none !important;
+    }
+}
+
+[data-theme='dark'] .tags-template .m-hero {
+    background: url('/assets/images/blog.iota.org-dark-tag-header.jpg');
+    background-position: center;
+    min-height: 320px;
+    @include respond-to('medium') {
+    }
+    img {
+        display: none !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .tags-template .m-hero {
+        background: url('/assets/images/blog.iota.org-dark-tag-header.jpg');
+        background-position: center;
+        min-height: 320px;
+        img {
+            display: none !important;
+        }
+    }
+}

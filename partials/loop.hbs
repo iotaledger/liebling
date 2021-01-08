@@ -25,7 +25,7 @@
     </div>
     {{#if primary_tag}}
       <div class="m-article-card__info">
-        <a href="{{primary_tag.url}}" class="m-article-card__tag">{{primary_tag.name}}</a>
+        <a href="{{primary_tag.url}}" class="m-article-card__tag {{primary_tag.slug}}">{{primary_tag.name}}</a>
     {{else}}
       <div class="m-article-card__info no-tag">
     {{/if}}
@@ -36,8 +36,8 @@
           </h2>
         </div>
         <div class="m-article-card__timestamp">
-          <span>{{date published_at timeago="true"}}</span>
-          <span>&bull;</span>
+          <span>{{date published_at}}</span>
+          <span> </span>
           <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
         </div>
       </a>
