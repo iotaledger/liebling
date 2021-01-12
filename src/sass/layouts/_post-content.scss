@@ -2,7 +2,7 @@
     padding-bottom: 15px;
 
     @include respond-to('medium') {
-        max-width: 820px;
+        max-width: 700px;
         margin: 0 auto;
 
         @include respond-to('medium') {
@@ -59,8 +59,8 @@
     }
 
     p {
-        letter-spacing: 0.02rem;
-        line-height: 1.5;
+        letter-spacing: 0;
+        line-height: 1.75rem;
         font-size: 1rem;
         margin-bottom: 25px;
 
@@ -94,8 +94,8 @@
 
     ul,
     ol {
-        letter-spacing: 0.02rem;
-        line-height: 1.5;
+        letter-spacing: 0;
+        line-height: 1.75rem;
         font-size: 1rem;
         padding-left: 20px;
         margin: 0 0 20px 0;
@@ -270,8 +270,8 @@
 
     blockquote {
         position: relative;
-        letter-spacing: 0.02rem;
-        line-height: 1.5;
+        letter-spacing: 0;
+        line-height: 1.75rem;
         font-size: 1rem;
         font-style: italic;
         font-family: Georgia, 'Times New Roman', Times, serif;
@@ -348,14 +348,28 @@
         font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
         padding: 0 5px;
         border-radius: 5px;
-        background-color: var(--primary-border-color);
+        color: #000;
+        background: 0 0;
+        text-shadow: 0 1px #fff;
+        font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 1.5;
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
     }
 
     pre {
         line-height: 1.4;
         font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-        margin: 0 0 25px;
-        overflow: auto;
         border-radius: 5px;
         background-color: var(--primary-border-color);
         white-space: pre;
@@ -370,9 +384,13 @@
         -moz-hyphens: none;
         -ms-hyphens: none;
         hyphens: none;
+        background: #f5f2f0;
+        padding: 1em;
+        margin: .5em 0;
+        overflow: auto;
 
         @include respond-to('medium') {
-            margin-bottom: 30px;
+            margin-bottom: 30px !important;
         }
 
         > code {
