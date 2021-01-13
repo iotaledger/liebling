@@ -2,8 +2,9 @@
     position: relative;
     height: 100%;
     overflow: hidden;
-    background-color: var(--primary-subtle-color);
     z-index: 1;
+    background: none;
+    visibility: visible;
 
     &:hover {
         .m-featured-article__author {
@@ -24,8 +25,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $black;
     z-index: 1;
+    background: none;
 
     div {
         width: 100%;
@@ -33,7 +34,7 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        opacity: 0.7;
+        opacity: 1;
     }
 }
 
@@ -84,11 +85,25 @@
 
 .m-featured-article__tag {
     font-family: 'Metropolis Bold';
-    color: var(--primary-subtle-color);
     letter-spacing: 0.3px;
     font-size: 1rem;
     line-height: 1.5;
     text-transform: uppercase;
+    background: #00e0ca;
+    box-shadow: 0px 4px 30px rgba(132, 147, 173, 0.1);
+    border-radius: 0px 0px 0px 10px;
+    padding: 14px 20px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #f6f8fc;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+
+    @include respond-to('medium') {
+        border-radius: 0px 10px;
+    }
 }
 
 .m-featured-article__ribbon {

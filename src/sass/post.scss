@@ -17,6 +17,10 @@
 @import 'components/articles/recommended-articles';
 @import 'components/articles/recommended-slider';
 
+.post-template{
+    background-color: var(--background-color) !important;
+}
+
 .post-template .m-hero.with-picture {
     min-height: unset;
     padding: 0;

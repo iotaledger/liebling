@@ -8,6 +8,7 @@
 :root,
 [data-theme='light'] {
     --background-color: #fff;
+    --page-bg-color: #F6F8FC;
     --secondary-background-color: #fff;
     --menu-list-color: #8493ad;
     --primary-foreground-color: #4a4a4a;
@@ -36,6 +37,7 @@
 
 [data-theme='dark'] {
     --background-color: #131f37;
+    --page-bg-color: #131f37;
     --secondary-background-color: #243352;
     --menu-list-color: #8493ad;
     --primary-foreground-color: #ccc;
@@ -65,6 +67,7 @@
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) {
         --background-color: #131f37;
+        --page-bg-color: #131f37;
         --secondary-background-color: #243352;
         --menu-list-color: #8493ad;
         --primary-foreground-color: #ccc;
