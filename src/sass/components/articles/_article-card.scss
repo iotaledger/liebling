@@ -218,12 +218,11 @@
     top: 15px;
     left: $mobile-space;
     right: $mobile-space;
-    letter-spacing: 0.2px;
     line-height: 100%;
     font-size: 0.875rem;
     letter-spacing: 0.04em;
     color: var(--secondary-subtle-color);
-    width: fit-content;
+    display: table;
     padding: 6px;
     z-index: 1;
     border-radius: 4px;
