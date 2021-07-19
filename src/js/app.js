@@ -188,8 +188,17 @@ $(() => {
       showSubmenu()
     } else {
       hideSubmenu()
+
+        }
+    })
+    const openExternalLinksInDifferentTab = () => {
+        let links = $('a')
+        $.each(links, function (index, value) {
+            if (!value.href.includes(window.location.hostname)) {
+                value.target = '_blank'
+            }
+        })
     }
-  })
 
   $openSearch.on('click', () => {
     $search.addClass('opened')
@@ -386,4 +395,5 @@ $(() => {
   checkForActionParameter()
   tryToRemoveNewsletter()
   trySearchFeature()
+    openExternalLinksInDifferentTab()
 })
