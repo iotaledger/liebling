@@ -395,5 +395,5 @@ $(() => {
   checkForActionParameter()
   tryToRemoveNewsletter()
   trySearchFeature()
-    openExternalLinksInDifferentTab()
+  openExternalLinksInDifferentTab()
 })
