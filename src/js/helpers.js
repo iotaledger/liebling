@@ -55,13 +55,23 @@ export const adjustImageGallery = () => {
 export const managePostImages = ($) => {
     $('.js-post-content')
         .find('img')
-        .each(function () {
+        .each(function() {
+            // TODO: improve sizings for mobile as now is taking images at w1000
             $(this).attr('sizes', '(max-width: 720px) 720px')
-            if (!$(this).closest('figure').hasClass('kg-bookmark-card') && !$(this).parent().is('a')) {
+            if (
+                !$(this)
+                    .closest('figure')
+                    .hasClass('kg-bookmark-card') &&
+                !$(this)
+                    .parent()
+                    .is('a')
+            ) {
                 $(this).addClass('js-zoomable')
             }
 
-            const $figcaption = $(this).parent().find('figcaption')
+            const $figcaption = $(this)
+                .parent()
+                .find('figcaption')
 
             if ($figcaption) {
                 $(this).attr('alt', $figcaption.text())
