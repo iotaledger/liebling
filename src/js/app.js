@@ -8,7 +8,7 @@ import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import shave from 'shave'
 import AOS from 'aos'
-import Fuse from 'fuse.js/dist/fuse.basic.esm.min.js'
+import * as Typesense from 'typesense/dist/typesense.min'
 import {
   isRTL,
   formatDate,
@@ -45,7 +45,7 @@ $(() => {
   const $newsletterElements = $('.js-newsletter')
   const currentSavedTheme = localStorage.getItem('theme')
 
-  let fuse = null
+  let postsCollection = null
   let submenuIsOpen = false
   let secondaryMenuTippy = null
 
@@ -72,46 +72,40 @@ $(() => {
   }
 
   const trySearchFeature = () => {
-    if (typeof ghostSearchApiKey !== 'undefined') {
-      getAllPosts(ghostHost, ghostSearchApiKey)
-    } else {
-      $openSearch.css('visibility', 'hidden')
-      $closeSearch.remove()
-      $search.remove()
+    if (typeof typesenseApiKey !== 'undefined') {
+      initTypesense()
     }
   }
 
-  const getAllPosts = (host, key) => {
-    const api = new GhostContentAPI({
-      url: host,
-      key,
-      version: 'v4'
-    })
-    const allPosts = []
-    const fuseOptions = {
-      shouldSort: true,
-      ignoreLocation: true,
-      findAllMatches: true,
-      includeScore: true,
-      minMatchCharLength: 2,
-      keys: ['title', 'custom_excerpt', 'tags.name']
-    }
+  // NOTE: This is not from the liebling theme
 
-    api.posts.browse({
-      limit: 'all',
-      include: 'tags',
-      fields: 'id, title, url, published_at, custom_excerpt'
-    })
-      .then((posts) => {
-        for (let i = 0, len = posts.length; i < len; i++) {
-          allPosts.push(posts[i])
-        }
+  const initTypesense = () => {
+      const searchClient = new Typesense.SearchClient({
+        nodes: [{
+          host: 'blog-search.iota.org',
+          port: '443',
+          protocol: 'https',
+        }],
+        apiKey: typesenseApiKey,
+        connectionTimeoutSeconds: 5,
+        cacheSearchResultsForSeconds: 120,
+      });
+      postsCollection = searchClient.collections('posts');
+  }
 
-        fuse = new Fuse(allPosts, fuseOptions)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+  const typesenseSearch = async (query) => {
+    const params = {
+      query_by: "title, tags, author, text",
+      query_by_weights: "3, 3, 1, 2",
+      highlight_fields: "text",
+      highlight_affix_num_tokens: 4,
+      per_page: 100,
+      typo_tokens_threshold: 10,
+      exclude_fields: "text",
+      num_typos: 2,
+    };
+
+    return await postsCollection.documents().search({ q: query, ...params });
   }
 
   const showNotification = (typeNotification) => {
@@ -214,24 +208,20 @@ $(() => {
     toggleScrollVertical()
   })
 
-  $inputSearch.on('keyup', () => {
-    if ($inputSearch.val().length > 0 && fuse) {
-      const results = fuse.search($inputSearch.val())
-      const bestResults = results.filter((result) => {
-        if (result.score <= 0.5) {
-          return result
-        }
-      })
+  $inputSearch.on('keyup', async () => {
+    if ($inputSearch.val().length > 0 && postsCollection) {
+      const results = (await typesenseSearch($inputSearch.val())).hits
 
       let htmlString = ''
 
-      if (bestResults.length > 0) {
-        for (let i = 0, len = bestResults.length; i < len; i++) {
+      if (results.length > 0) {
+        for (let i = 0, len = results.length; i < len; i++) {
+          const date = results[i].document.date * 1000
           htmlString += `
           <article class="m-result">\
-            <a href="${bestResults[i].item.url}" class="m-result__link">\
-              <h3 class="m-result__title">${bestResults[i].item.title}</h3>\
-              <span class="m-result__date">${formatDate(bestResults[i].item.published_at)}</span>\
+            <a href="${results[i].document.url}" class="m-result__link">\
+              <h3 class="m-result__title">${results[i].document.title}</h3>\
+              <span class="m-result__date">${formatDate(date)}</span>\
             </a>\
           </article>`
         }
