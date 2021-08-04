@@ -20,6 +20,11 @@
         max-width: 680px;
         margin: 0 auto;
     }
+    @include respond-to('large') {
+        padding: 45px 0;
+        max-width: 1032px;
+        margin: 0 auto;
+    }
 }
 
 .m-footer__nav-secondary {
@@ -37,9 +42,15 @@
         }
     }
 }
-
+.m-footer-grid {
+    display: block;
+    @include respond-to('large') {
+        display: grid;
+        grid-template-columns: 34% 66%;
+    }
+}
 .m-footer-copyright {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     font-size: 0.75rem;
     line-height: 1.5;
     text-align: center;
@@ -48,25 +59,19 @@
     @include respond-to('medium') {
         font-size: 0.875rem;
     }
-
-    span {
-        display: block;
-
-        @include respond-to('medium') {
-            display: inline;
-        }
-
-        &:nth-child(2) {
-            display: none;
-
-            @include respond-to('medium') {
-                display: inline;
-            }
-        }
+    p {
+        color: #c3d0e4;
+        line-height: 0.5em;
     }
-
+    span {
+        display: inline;
+    }
     a {
         text-decoration: underline;
+        margin-left: 0.25rem;
+        &:hover {
+            color: #00e0ca;
+        }
     }
 
     &.jslicense {
@@ -74,7 +79,9 @@
         margin-bottom: 0;
     }
 }
-
+#foundationRegisteredAddress span {
+    margin-right: 0.25rem;
+}
 .m-footer-social {
     display: flex;
     align-items: center;
