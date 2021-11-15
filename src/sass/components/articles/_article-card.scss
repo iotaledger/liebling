@@ -5,7 +5,7 @@
     margin-bottom: 20px;
     height: 400px;
     background-color: var(--background-color);
-    border-radius: 10px;
+    border-radius: 0px;
     z-index: 1;
     @include transition(all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1));
 
@@ -80,7 +80,7 @@
         right: 10px;
         bottom: 0;
         left: 10px;
-        border-radius: 10px;
+        border-radius: 0px;
         @include bs(var(--article-shadow-normal));
         @include transition(all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1));
     }
@@ -88,7 +88,7 @@
 
 .m-article-card__picture {
     position: relative;
-    border-radius: 10px 10px 0 0;
+    border-radius: 0;
     background-color: var(--background-color);
     overflow: hidden;
     width: 100%;
@@ -193,7 +193,7 @@
     padding-top: 48px;
     height: 200px;
     overflow: hidden;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0;
     background-color: var(--secondary-background-color);
 
     @include respond-to('medium') {
@@ -225,7 +225,7 @@
     display: table;
     padding: 6px;
     z-index: 1;
-    border-radius: 4px;
+    border-radius: 0px;
     overflow: hidden;
 
     &:before {
@@ -235,8 +235,7 @@
         height: 100%;
         top: 0;
         left: 0;
-        background: var(--secondary-subtle-color);
-        opacity: 0.2;
+        border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     @include respond-to('medium') {

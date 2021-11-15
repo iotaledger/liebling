@@ -6,9 +6,10 @@
 
 // custom home hero
 body.home-template .m-hero,
-[class="paged"] .m-hero {
-    background: url('/assets/images/blog.iota.org-light-mode-header.jpg');
+[class='paged'] .m-hero {
+    background: url('/assets/images/BlogHeader_White.png');
     background-position: center;
+    background-repeat: no-repeat;
     min-height: 350px;
     @include respond-to('medium') {
         min-height: 530px;
@@ -19,9 +20,10 @@ body.home-template .m-hero,
 }
 
 [data-theme='dark'] body.home-template .m-hero,
-[data-theme='dark'] [class="paged"] .m-hero {
-    background: url('/assets/images/blog.iota.org-dark-mode-header.jpg');
+[data-theme='dark'] [class='paged'] .m-hero {
+    background: url('/assets/images/Blogheader_Dark.png');
     background-position: center;
+    background-repeat: no-repeat;
     min-height: 350px;
     @include respond-to('medium') {
         min-height: 530px;
@@ -33,9 +35,10 @@ body.home-template .m-hero,
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) body.home-template .m-hero,
-    :root:not([data-theme='light']) [class="paged"] .m-hero {
-        background: url('/assets/images/blog.iota.org-dark-mode-header.jpg');
+    :root:not([data-theme='light']) [class='paged'] .m-hero {
+        background: url('/assets/images/Blogheader_Dark.png');
         background-position: center;
+        background-repeat: no-repeat;
         min-height: 350px;
         @include respond-to('medium') {
             min-height: 530px;
