@@ -7,8 +7,7 @@
 
 // custom tags hero
 .tags-template .m-hero {
-    background: url('/assets/images/blog.iota.org-light-tag-header.jpg');
-    background-position: center;
+    background: transparent;
     min-height: 320px;
     @include respond-to('medium') {
     }
@@ -18,8 +17,7 @@
 }
 
 [data-theme='dark'] .tags-template .m-hero {
-    background: url('/assets/images/blog.iota.org-dark-tag-header.jpg');
-    background-position: center;
+    background: transparent;
     min-height: 320px;
     @include respond-to('medium') {
     }
@@ -30,8 +28,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) .tags-template .m-hero {
-        background: url('/assets/images/blog.iota.org-dark-tag-header.jpg');
-        background-position: center;
+        background: transparent;
         min-height: 320px;
         img {
             display: none !important;

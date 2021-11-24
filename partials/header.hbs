@@ -7,15 +7,9 @@ This header template is shared across all the pages.
     <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="{{t "Open menu"}}">
       <span class="icon-menu" aria-hidden="true"></span>
     </button>
-    {{#if @site.logo}}
-      <a href="{{@site.url}}" class="m-logo in-mobile-topbar">
+    <a href="{{@site.url}}" class="m-logo in-mobile-topbar">
         <img src={{asset "images/assembly_blog_logo.svg"}} alt="{{@site.title}}">
       </a>
-    {{else}}
-      <a href="{{@site.url}}" class="m-site-name in-mobile-topbar">
-        {{@site.title}}
-      </a>
-    {{/if}}
     <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="{{t "Open search"}}">
       <span class="icon-search" aria-hidden="true"></span>
     </button>
@@ -30,19 +24,11 @@ This header template is shared across all the pages.
         <div class="m-nav js-main-nav">
           <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="{{t "Main menu"}}">
             <ul>
-              {{#if @site.logo}}
-                <li class="only-desktop">
-                  <a href="{{@site.url}}" class="m-logo">
-                    <img src={{asset "images/assembly_blog_logo.svg"}} alt="{{@site.title}}">
-                  </a>
-                </li>
-                {{else}}
-                <li class="only-desktop">
-                  <a href="{{@site.url}}" class="m-site-name in-desktop-menu">
-                    {{@site.title}}
-                  </a>
-                </li>
-              {{/if}}
+              <li class="only-desktop">
+                <a href="{{@site.url}}" class="m-logo">
+                  <img src={{asset "images/assembly_blog_logo.svg"}} alt="{{@site.title}}">
+                </a>
+              </li>
               {{#if @site.navigation}}
                 {{navigation}}
               {{/if}}

@@ -49,12 +49,12 @@
     line-height: 1.5;
     text-align: center;
     letter-spacing: 0.04em;
-    color: var(--primary-foreground-color);
+    color: #fff;
     @include respond-to('medium') {
         font-size: 0.875rem;
     }
     p {
-        color: var(--primary-foreground-color);
+        color: #fff;
         line-height: 0.5em;
     }
     span {
@@ -84,11 +84,11 @@
 
     a {
         display: inline-block;
-        color: var(--primary-foreground-color);
+        color: #fff;
         margin: 0 15px;
 
         span {
-            color: var(--primary-foreground-color);
+            color: #fff;
             font-size: 1rem;
         }
     }
