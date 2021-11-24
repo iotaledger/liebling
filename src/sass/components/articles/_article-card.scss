@@ -4,17 +4,14 @@
     position: relative;
     margin-bottom: 20px;
     height: 400px;
-    background-color: var(--background-color);
-    border-radius: 0px;
+    background-color: transparent;
     z-index: 1;
+    border: 1px solid var(--primary-border-color);
+    border-radius: 32px;
     @include transition(all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1));
 
     &:hover {
         @include transform(translateY(-5px));
-
-        &:before {
-            @include bs(var(--article-shadow-hover));
-        }
 
         .m-article-card__author {
             @include bs(0 4px 8px rgba(0, 0, 0, 0.3));
@@ -72,18 +69,6 @@
             padding: $mobile-space $mobile-space 60px $mobile-space;
         }
     }
-
-    &:before {
-        content: '';
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        bottom: 0;
-        left: 10px;
-        border-radius: 0px;
-        @include bs(var(--article-shadow-normal));
-        @include transition(all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1));
-    }
 }
 
 .m-article-card__picture {
@@ -91,8 +76,10 @@
     border-radius: 0;
     background-color: var(--background-color);
     overflow: hidden;
-    width: 100%;
     padding-bottom: 50%;
+    width: calc(100% - 32px);
+    margin: 0 auto;
+    top: 16px;
 }
 
 .m-article-card__picture-link {
@@ -106,12 +93,13 @@
 
 .m-article-card__picture-background {
     position: absolute;
-    top: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%);
     width: 100%;
-    height: 100%;
+    height: calc(100% - 16px);
     object-fit: cover;
     z-index: 0;
+    border-radius: 24px;
 }
 
 .m-article-card__name {
@@ -194,7 +182,6 @@
     height: 200px;
     overflow: hidden;
     border-radius: 0;
-    background-color: var(--secondary-background-color);
 
     @include respond-to('medium') {
         padding-top: 53px;
@@ -223,20 +210,10 @@
     letter-spacing: 0.04em;
     color: var(--secondary-subtle-color);
     display: table;
-    padding: 6px;
+    padding: 6px 0;
     z-index: 1;
     border-radius: 0px;
     overflow: hidden;
-
-    &:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-    }
 
     @include respond-to('medium') {
         top: 18px;
@@ -260,9 +237,10 @@
 .m-article-card__title {
     color: var(--titles-color);
     margin: 0;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    letter-spacing: 0.02em;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 130%;
+    letter-spacing: 0.2px;
 }
 
 .m-article-card__excerpt {
@@ -280,7 +258,7 @@
 .m-article-card__author-stats {
     display: flex;
     align-items: center;
-    color: var(--titles-color);
+    color: var(--secondary-subtle-color);
     line-height: 1.25rem;
     font-size: 0.75rem;
     letter-spacing: 0.02em;

@@ -1,6 +1,7 @@
 .m-footer {
     flex-shrink: 0;
     background-color: var(--footer-background-color);
+    border-top: 1px solid var(--primary-border-color);
 }
 
 .m-footer__content {
@@ -48,12 +49,12 @@
     line-height: 1.5;
     text-align: center;
     letter-spacing: 0.04em;
-    color: #8493ad;
+    color: var(--primary-foreground-color);
     @include respond-to('medium') {
         font-size: 0.875rem;
     }
     p {
-        color: #c3d0e4;
+        color: var(--primary-foreground-color);
         line-height: 0.5em;
     }
     span {
@@ -63,7 +64,7 @@
         text-decoration: underline;
         margin-left: 0.25rem;
         &:hover {
-            color: #00e0ca;
+            color: #666274;
         }
     }
 
@@ -83,11 +84,11 @@
 
     a {
         display: inline-block;
-        color: #c3d0e4;
+        color: var(--primary-foreground-color);
         margin: 0 15px;
 
         span {
-            color: #c3d0e4;
+            color: var(--primary-foreground-color);
             font-size: 1rem;
         }
     }
@@ -100,5 +101,6 @@
 }
 
 .m-footer__logo {
-    margin-bottom: 14px;
+    filter: invert(1);
+    margin-bottom: 36px;
 }

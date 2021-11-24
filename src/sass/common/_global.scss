@@ -8,7 +8,7 @@ body {
     color: var(--primary-foreground-color);
     font-size: 1rem;
     line-height: 1.5rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Carmen Sans', sans-serif;
     font-display: swap;
     overflow-x: hidden;
     background-color: var(--page-bg-color);
@@ -66,7 +66,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Metropolis Bold';
+    font-family: 'Carmen Sans', sans-serif;
     color: var(--titles-color);
     line-height: 1.25;
     letter-spacing: 0.02rem;
@@ -100,29 +100,4 @@ h4,
 h5,
 h6 {
     font-size: 1.25rem;
-}
-
-.headline-stick {
-    height: 4px;
-    background-color: #00e0ca;
-    margin-bottom: 1.25rem;
-    width: 16px;
-    margin-left: auto;
-    margin-right: auto;
-
-    &.size-s {
-        width: 24px;
-    }
-
-    &.size-m {
-        width: 48px;
-    }
-
-    &.size-l {
-        width: 80px;
-    }
-
-    &.size-xl {
-        width: 120px;
-    }
 }

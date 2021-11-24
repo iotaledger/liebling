@@ -48,20 +48,21 @@
 
 // dark/light mode support
 
-.m-logo svg .letter {
+.m-logo img {
+    max-height: 100%;
     filter: invert(1);
 }
-[data-theme='light'] .m-logo svg .letter {
+[data-theme='light'] .m-logo img {
     filter: invert(1);
 }
-[data-theme='dark'] .m-logo svg .letter {
+[data-theme='dark'] .m-logo img {
     filter: none;
 }
 @media (prefers-color-scheme: dark) {
-    .m-logo svg .letter {
+    .m-logo img {
         filter: none;
     }
-    [data-theme='light'] .m-logo svg .letter {
+    [data-theme='light'] .m-logo img {
         filter: invert(1);
     }
 }
