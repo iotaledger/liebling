@@ -41,7 +41,6 @@ mix.js('js/helpers.js', 'js/')
         processCssUrls: false
     })
     .copy('sass/fonts/icomoon/*.*', '../assets/fonts/icomoon/')
-    .copy('sass/fonts/carmen/*.*', '../assets/fonts/carmen/')
     .copy('assets/img/*.*', '../assets/img/')
     // .copyDirectory('sass/fonts/source-sans-pro/', '../assets/fonts/source-sans-pro/')
     .copy('js/vendor/content-api.min.js', '../assets/js/vendor/')
