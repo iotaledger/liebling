@@ -16,7 +16,7 @@
     h4,
     h5,
     h6 {
-        font-family: 'Metropolis Bold';
+        font-weight: bold;
         color: var(--titles-color);
         letter-spacing: 0.02rem;
         line-height: 1.25;
@@ -351,7 +351,7 @@
         color: #000;
         background: 0 0;
         text-shadow: 0 1px #fff;
-        font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
         text-align: left;
         white-space: pre;
         word-spacing: normal;
@@ -386,7 +386,7 @@
         hyphens: none;
         background: #f5f2f0;
         padding: 1em;
-        margin: .5em 0;
+        margin: 0.5em 0;
         overflow: auto;
 
         @include respond-to('medium') {
