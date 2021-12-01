@@ -1,4 +1,4 @@
-const FOUNDATION_DATA_URL = 'https://webassets.iota.works/data/assembly.json'
+const FOUNDATION_DATA_URL = 'https://webassets.iota.org/data/assembly.json'
 
 fetch(FOUNDATION_DATA_URL)
     .then((resp) => resp.json())
