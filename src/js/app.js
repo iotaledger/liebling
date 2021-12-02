@@ -85,7 +85,7 @@ $(() => {
             connectionTimeoutSeconds: 5,
             cacheSearchResultsForSeconds: 120
         })
-        postsCollection = searchClient.collections('shimmer-posts')
+        postsCollection = searchClient.collections('assembly-posts')
     }
 
     const typesenseSearch = async (query) => {
