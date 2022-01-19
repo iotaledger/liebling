@@ -157,22 +157,16 @@
         }
 
         /* Hero image */
-        .post-image {
-            padding-top: 45px;
-        }
-
-        .post-image figure {
-            margin: 0 0 5vmin;
-        }
-
-        .post-image img {
-            display: block;
+        .fixed-container {
+            margin-top: 45px;
+            position: relative;
             width: 100%;
-            height: auto;
+            height: 168.75px;
         }
 
-
-
+        amp-img.cover img {
+            object-fit: cover;
+        }
 
         /* Post content */
         .post {
@@ -252,7 +246,7 @@
             border: 0;
             height: 0;
             overflow: visible;
-            border-top: 1px solid #131f37;
+            border-top: 1px solid #0fc1b7;
             opacity: 1;
         }
 
@@ -356,7 +350,7 @@
             line-height: 1.4;
             font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
             border-radius: 5px;
-            background-color: var(--primary-border-color);
+            background-color: #eef2fa;
             white-space: pre;
             word-spacing: normal;
             word-break: normal;
@@ -1103,10 +1097,10 @@
     </header>
 
     {{#if feature_image}}
-    <figure class="post-image">
-        <amp-img src="{{img_url feature_image absolute=" true"}}" width="600" height="340" layout="responsive">
+    <div class="fixed-container">
+        <amp-img class="cover" src="{{img_url feature_image absolute=" true"}}" layout="fill">
         </amp-img>
-    </figure>
+    </div>
 
     {{/if}}
     <main class="content" role="main">
