@@ -158,12 +158,13 @@
 
         /* Hero image */
         .fixed-container {
-            margin-top: 45px;
-            position: relative;
-            width: 100%;
-            height: 168.75px;
+            margin: 0 0 5vmin;
         }
-
+        .fixed-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
         amp-img.cover img {
             object-fit: cover;
         }
@@ -1097,10 +1098,9 @@
     </header>
 
     {{#if feature_image}}
-    <div class="fixed-container">
-        <amp-img class="cover" src="{{img_url feature_image absolute=" true"}}" layout="fill">
-        </amp-img>
-    </div>
+        <div class="fixed-container">
+            <amp-img src="{{img_url feature_image absolute="true"}}" width="700" height="320" layout="responsive"></amp-img>
+        </div>
 
     {{/if}}
     <main class="content" role="main">
