@@ -1,10 +1,10 @@
 let mix = require('laravel-mix')
 
 mix.options({
-  terser: {
-    extractComments: false,
-  }
-});
+    terser: {
+        extractComments: false
+    }
+})
 
 mix.webpackConfig({
     module: {
@@ -46,5 +46,5 @@ mix.js('js/helpers.js', 'js/')
     .copy('js/vendor/content-api.min.js', '../assets/js/vendor/')
     .browserSync({
         proxy: 'localhost:2368',
-        files: ['js/**/*.js', 'sass/**/*.scss', '../**/*.hbs']
+        files: ['js/**/*.js', 'sass/**/*.scss', '../**/*.hbs', '!../**/amp.hbs', '!../amp.hbs']
     })
