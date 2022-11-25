@@ -1,5 +1,6 @@
 .m-nav {
-    font-family: 'Metropolis Medium';
+    font-family: 'Metropolis';
+    font-weight: 500;
     font-size: 0.875rem;
     line-height: 1rem;
     @include respond-to('medium') {
