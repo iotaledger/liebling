@@ -93,7 +93,19 @@
         }
     }
 }
+.m-footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    a {
+        display: inline-block;
+        color: #fff;
+        margin: 0 15px;
 
+        font-size: 0.7rem;
+    }
+}
 .rtl {
     .m-footer-social {
         direction: ltr;
