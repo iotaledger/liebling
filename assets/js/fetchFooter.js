@@ -5,6 +5,7 @@ fetch(FOUNDATION_DATA_URL)
     .then(function (data) {
         if (data.information) {
             let foundationLegalData = data.information
+            foundationLegalData[0].urls?.push({ label: 'Cookie Policy', url: '/cookie-policy' })
             foundationLegalData.forEach(function (item) {
                 let span = document.createElement('span')
                 span.innerHTML += '</br>' + item.label
@@ -23,6 +24,7 @@ fetch(FOUNDATION_DATA_URL)
                             span.innerHTML += ','
                             document.getElementById('foundationLegal').appendChild(span)
                         }
+
                     })
                 }
                 if (item.value) {
@@ -30,6 +32,7 @@ fetch(FOUNDATION_DATA_URL)
                     span.innerHTML = ' ' + item.value
                     document.getElementById('foundationLegal').appendChild(span)
                 }
+
             })
         }
         if (data.registeredAddress) {
