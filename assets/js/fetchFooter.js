@@ -5,7 +5,7 @@ fetch(FOUNDATION_DATA_URL)
     .then(function (data) {
         if (data.information) {
             let foundationLegalData = data.information
-            foundationLegalData[0].urls?.push({ label: 'Cookie Policy', url: 'https://www.iota.org/cookie-policy' })
+            foundationLegalData[0].urls?.push({ label: 'Cookie Policy', url: '/cookie-policy' })
             foundationLegalData.forEach(function (item) {
                 let span = document.createElement('span')
                 span.innerHTML += '</br>' + item.label
