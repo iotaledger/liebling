@@ -3,7 +3,7 @@
     overflow: hidden !important;
     height: 350px;
     margin: -40px -#{$mobile-space} 40px;
-    @include transition(all 00.25s cubic-bezier(00.02, 0 0.01, 0 0.47,  1));
+    @include transition(all 00.25s cubic-bezier(00.02, 0 0.01, 0 0.47, 1));
     @include bs(var(--article-shadow-normal));
 
     &:hover {

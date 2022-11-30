@@ -6,7 +6,7 @@
 
 // custom home hero
 body.home-template .m-hero,
-[class="paged"] .m-hero {
+[class='paged'] .m-hero {
     background: url('/assets/images/blog.iota.org-light-mode-header.jpg');
     background-position: center;
     min-height: 350px;
@@ -19,7 +19,7 @@ body.home-template .m-hero,
 }
 
 [data-theme='dark'] body.home-template .m-hero,
-[data-theme='dark'] [class="paged"] .m-hero {
+[data-theme='dark'] [class='paged'] .m-hero {
     background: url('/assets/images/blog.iota.org-dark-mode-header.jpg');
     background-position: center;
     min-height: 350px;
@@ -33,7 +33,7 @@ body.home-template .m-hero,
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) body.home-template .m-hero,
-    :root:not([data-theme='light']) [class="paged"] .m-hero {
+    :root:not([data-theme='light']) [class='paged'] .m-hero {
         background: url('/assets/images/blog.iota.org-dark-mode-header.jpg');
         background-position: center;
         min-height: 350px;

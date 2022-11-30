@@ -1,12 +1,12 @@
 .m-mobile-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: $mobile-bar-height;
-  position: relative;
-  z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $mobile-bar-height;
+    position: relative;
+    z-index: 2;
 
-  @include respond-to('medium') {
-    display: none !important;
-  }
+    @include respond-to('medium') {
+        display: none !important;
+    }
 }

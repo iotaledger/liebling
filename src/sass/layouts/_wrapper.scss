@@ -1,63 +1,63 @@
 .l-wrapper {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 $mobile-space;
-
-  @include respond-to('medium') {
-    max-width: 1200px;
-  }
-
-  @include respond-to('extra-large') {
-    padding: 0;
-  }
-
-  &.in-submenu {
-    padding: 0;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 $mobile-space;
 
     @include respond-to('medium') {
-      padding: 0 $mobile-space;
+        max-width: 1200px;
     }
 
     @include respond-to('extra-large') {
-      padding: 0;
-    }
-  }
-
-  &.in-post {
-    @include respond-to('medium') {
-      max-width: 960px;
-    }
-  }
-
-  &.in-comments {
-    color: var(--primary-foreground-color);
-
-    @include respond-to('medium') {
-      max-width: 820px;
-    }
-  }
-
-  &.in-recommended {
-    @include respond-to('large') {
-      padding: 0;
-      max-width: calc(100% - 60px);
+        padding: 0;
     }
 
-    @include respond-to('largest') {
-      max-width: 1200px;
+    &.in-submenu {
+        padding: 0;
+
+        @include respond-to('medium') {
+            padding: 0 $mobile-space;
+        }
+
+        @include respond-to('extra-large') {
+            padding: 0;
+        }
     }
-  }
+
+    &.in-post {
+        @include respond-to('medium') {
+            max-width: 960px;
+        }
+    }
+
+    &.in-comments {
+        color: var(--primary-foreground-color);
+
+        @include respond-to('medium') {
+            max-width: 820px;
+        }
+    }
+
+    &.in-recommended {
+        @include respond-to('large') {
+            padding: 0;
+            max-width: calc(100% - 60px);
+        }
+
+        @include respond-to('largest') {
+            max-width: 1200px;
+        }
+    }
 }
 
 .l-wrapper.in-post.no-image {
-  padding-top: 40px;
+    padding-top: 40px;
 
-  @include respond-to('medium') {
-    padding-top: 80px;
-  }
+    @include respond-to('medium') {
+        padding-top: 80px;
+    }
 }
 
 .l-wrapper.in-caption {
-  padding-top: 10px;
+    padding-top: 10px;
 }

@@ -1,49 +1,49 @@
 .m-recommended-slider {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 
-  @include respond-to("large") {
-    padding: 20px 30px 0 !important;
-    margin: -20px -30px 0 !important;
-  }
-
-  .swiper-wrapper {
-    padding: 40px 0 60px;
-
-    @include respond-to("large") {
-      justify-content: center;
+    @include respond-to('large') {
+        padding: 20px 30px 0 !important;
+        margin: -20px -30px 0 !important;
     }
 
-    @include respond-to("extra-large") {
-      overflow: visible;
-    }
-  }
+    .swiper-wrapper {
+        padding: 40px 0 60px;
 
-  .m-article-card {
-    width: 100% !important;
-    margin: 0 !important;
+        @include respond-to('large') {
+            justify-content: center;
+        }
 
-    @include respond-to("large") {
-      .m-article-card__picture {
-        height: 190px;
-      }
+        @include respond-to('extra-large') {
+            overflow: visible;
+        }
     }
 
-    @include respond-to("extra-large") {
-      .m-article-card__picture {
-        height: 220px;
-      }
+    .m-article-card {
+        width: 100% !important;
+        margin: 0 !important;
+
+        @include respond-to('large') {
+            .m-article-card__picture {
+                height: 190px;
+            }
+        }
+
+        @include respond-to('extra-large') {
+            .m-article-card__picture {
+                height: 220px;
+            }
+        }
     }
-  }
 }
 
 .m-recommended-slider__item {
-  padding: 0 20px;
+    padding: 0 20px;
 
-  &.swiper-slide-duplicate {
-    @include respond-to("large") {
-      display: none !important;
+    &.swiper-slide-duplicate {
+        @include respond-to('large') {
+            display: none !important;
+        }
     }
-  }
 }
