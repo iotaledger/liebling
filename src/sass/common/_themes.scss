@@ -33,6 +33,7 @@
     --toggle-darkmode-background-color: rgba(0, 0, 0, 0.05);
     --header-menu-gradient-first-color: rgba(255, 255, 255, 0);
     --header-menu-gradient-secound-color: rgba(255, 255, 255, 1);
+    --kg-card-img-invert-color: 0;
 }
 
 [data-theme='dark'] {
@@ -62,6 +63,7 @@
     --toggle-darkmode-background-color: rgba(0, 0, 0, 0.5);
     --header-menu-gradient-first-color: rgba(17, 17, 17, 0);
     --header-menu-gradient-secound-color: rgba(17, 17, 17, 0.65);
+    --kg-card-img-invert-color: 1;
 }
 
 @media (prefers-color-scheme: dark) {
