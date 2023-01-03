@@ -114,6 +114,16 @@ $(() => {
   const $scrollButton = $('.js-scrolltop')
   const $recommendedSlider = $('.js-recommended-slider')
 
+  const thisYear = new Date().getFullYear()
+  const dateToCheck = $('.js-date-published')[0].innerText
+  const yearToCheck = new Date(dateToCheck).getFullYear() + 1
+
+  if (thisYear <= yearToCheck) {
+    $('.post-disclaimer').addClass('hidden')
+  } else {
+    $('.post-disclaimer').removeClass('hidden')
+  }
+
   fitvids('.js-post-content')
 
   adjustImageGallery()
