@@ -44,8 +44,9 @@ into the {body} of the default.hbs template --}}
                   <a href="{{primary_tag.url}}" class="m-heading__meta__tag">{{primary_tag.name}}</a>
                   <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
                 {{/if}}
-                <span class="m-heading__meta__time">{{date published_at}}</span>
+                <span class="m-heading__meta__time js-date-published">{{date published_at}}</span>
               </div>
+              <div class="post-disclaimer js-disclaimer">This post is more than one year old. The contents within the blog is likely to be out of date.</div>
             </header>
             <div class="pos-relative js-post-content">
               <div class="m-share">
