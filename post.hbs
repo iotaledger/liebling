@@ -37,7 +37,7 @@ into the {body} of the default.hbs template --}}
           data-aos-delay="300">
           <div
             class="l-post-content js-progress-content">
-            <header class="m-heading">
+            <header id="header" class="m-heading">
               <h1 class="m-heading__title in-post">{{title}}</h1>
               <div class="m-heading__meta">
                 {{#if primary_tag}}
@@ -46,7 +46,6 @@ into the {body} of the default.hbs template --}}
                 {{/if}}
                 <span class="m-heading__meta__time js-date-published">{{date published_at}}</span>
               </div>
-              <div class="post-disclaimer js-disclaimer">This post is more than one year old. The contents within the blog is likely to be out of date.</div>
             </header>
             <div class="pos-relative js-post-content">
               <div class="m-share">
