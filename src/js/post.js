@@ -114,40 +114,13 @@ $(() => {
   const $scrollButton = $('.js-scrolltop')
   const $recommendedSlider = $('.js-recommended-slider')
 
+  const postPublishedDate = new Date($('.js-date-published')[0].innerText).getTime()
+  const today = new Date().getTime()
 
-  function getFormattedDate(date) {
-    let year = date.getFullYear();
-
-    let month = (1 + date.getMonth()).toString();
-    month = month.length > 1 ? month : '0' + month;
-
-    let day = date.getDate().toString();
-    day = day.length > 1 ? day : '0' + day;
-
-    return month + '/' + day + '/' + year;
-  }
-
-  const dateToCheck = new Date($('.js-date-published')[0].innerText)
-  const formattedDateToCheck = getFormattedDate(dateToCheck)
-
-  const today = new Date()
-  const formattedToday = getFormattedDate(today)
-
-  /**
- * Take the difference between the dates and divide by milliseconds per day.
- */
-function datediff(firstDate, secondDate) {
-  return Math.round((secondDate - firstDate) / (1000 * 60 * 60 * 24));
-}
-
- function parseDate(str) {
-  let mdy = str.split('/');
-  return new Date(mdy[2], mdy[0] - 1, mdy[1]);
-}
-
-  if (datediff(parseDate(formattedDateToCheck), parseDate(formattedToday)) > 365) {
+  // if a post is older than a year, add a disclaimer
+  if(today - postPublishedDate > 365*24*60*60*1000) {
     $('#header').append('<div class="post-disclaimer js-disclaimer">This blog post was originally posted over a year ago; therefore some of the content could be out of date.</div>')
-    }
+  }
 
   fitvids('.js-post-content')
 
