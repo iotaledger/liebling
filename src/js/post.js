@@ -114,6 +114,14 @@ $(() => {
   const $scrollButton = $('.js-scrolltop')
   const $recommendedSlider = $('.js-recommended-slider')
 
+  const postPublishedDate = new Date($('.js-date-published')[0].innerText).getTime()
+  const today = new Date().getTime()
+
+  // if a post is older than a year, add a disclaimer
+  if(today - postPublishedDate > 365*24*60*60*1000) {
+    $('#header').append('<div class="post-disclaimer js-disclaimer">This blog post was originally posted over a year ago; therefore some of the content could be out of date.</div>')
+  }
+
   fitvids('.js-post-content')
 
   adjustImageGallery()
