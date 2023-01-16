@@ -146,7 +146,7 @@ function datediff(firstDate, secondDate) {
 }
 
   if (datediff(parseDate(formattedDateToCheck), parseDate(formattedToday)) > 365) {
-    $('#header').append('<div class="post-disclaimer js-disclaimer">This post is more than one year old. The contents within the blog is likely to be out of date.</div>')
+    $('#header').append('<div class="post-disclaimer js-disclaimer">This blog post was originally posted over a year ago; therefore some of the content could be out of date.</div>')
     }
 
   fitvids('.js-post-content')
