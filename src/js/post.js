@@ -119,7 +119,7 @@ $(() => {
 
   // if a post is older than a year, add a disclaimer
   if(today - postPublishedDate > 365*24*60*60*1000) {
-    $('#header').append('<div class="post-disclaimer js-disclaimer">This blog post was originally posted over a year ago; therefore some of the content could be out of date.</div>')
+    $('#header').append('<div class="post-disclaimer js-disclaimer">Disclaimer: This blog post was originally posted over a year ago, therefore some of the content might be out of date.</div>')
   }
   fitvids('.js-post-content')
 
