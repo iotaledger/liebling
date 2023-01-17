@@ -37,14 +37,14 @@ into the {body} of the default.hbs template --}}
           data-aos-delay="300">
           <div
             class="l-post-content js-progress-content">
-            <header class="m-heading">
+            <header id="header" class="m-heading">
               <h1 class="m-heading__title in-post">{{title}}</h1>
               <div class="m-heading__meta">
                 {{#if primary_tag}}
                   <a href="{{primary_tag.url}}" class="m-heading__meta__tag">{{primary_tag.name}}</a>
                   <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
                 {{/if}}
-                <span class="m-heading__meta__time">{{date published_at}}</span>
+                <span class="m-heading__meta__time js-date-published">{{date published_at}}</span>
               </div>
             </header>
             <div class="pos-relative js-post-content">
