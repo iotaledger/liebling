@@ -1,0 +1,28 @@
+name: Build and create zip - Assembly Blog
+on:
+  push:
+    branches:
+      - feat/assembly-blog
+jobs:     
+  build_create_zip_assembly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+            node-version: '14'
+      - name: Install dependencies
+        run: cd src && yarn
+      - name: add webpack
+        run: npm link webpack
+      - name: Build and create zip
+        run: zip -r liebling.zip ./* -x 'node_modules/*' -x '*src*'
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with: 
+          name: ASSEMBLY_Blog
+          path: liebling.zip
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+
