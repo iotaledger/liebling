@@ -12,11 +12,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
             node-version: '14'
-      - name: Install dependencies
-        run: cd src && yarn
-      - name: add webpack
-        run: npm link webpack
-      - name: Build and create zip
+      - name: Install dependencies && build
+        run: cd src && yarn && yarn build
+      - name: Create zip
         run: zip -r liebling.zip ./* -x 'node_modules/*' -x '*src*'
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
