@@ -118,7 +118,7 @@ $(() => {
   const today = new Date().getTime()
 
   // if a post is older than a year, add a disclaimer
-  if(today - postPublishedDate > 365*24*60*60*1000) {
+  if (today - postPublishedDate > 365 * 24 * 60 * 60 * 1000) {
     $('#header').append('<div class="post-disclaimer js-disclaimer">Disclaimer: This blog post was originally posted over a year ago, therefore some of the content might be out of date.</div>')
   }
 
@@ -197,6 +197,13 @@ $(() => {
   window.addEventListener('resize', onResizing, { passive: true })
 })
 
+const hideHardCodedFollowUs = () => {
+  $("p").filter(function () {
+    return $(this).text().includes("Follow us on our official channels for the latest updates:");
+  }).hide();
+}
+
 $(window).on('load', () => {
   prepareProgressCircle()
+  hideHardCodedFollowUs()
 })
