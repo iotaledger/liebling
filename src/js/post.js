@@ -196,6 +196,13 @@ $(() => {
   window.addEventListener('resize', onResizing, { passive: true })
 })
 
+const hideHardCodedFollowUs = () => {
+  $("p").filter(function () {
+    return $(this).text().includes("Follow us on our official channels for the latest updates:");
+  }).hide();
+}
+
 $(window).on('load', () => {
   prepareProgressCircle()
+  hideHardCodedFollowUs()
 })
