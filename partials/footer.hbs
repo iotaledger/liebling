@@ -12,24 +12,36 @@ This footer template is shared across all the pages.
       <img src={{asset "images/assembly-logo.svg"}}>
     </div>
     <nav class="m-footer-social">
-       <a href="https://assembly.sc/" target="_blank" rel="noopener" aria-label="Website">
-        <span class="icon-globe" aria-hidden="true"></span>
-      </a>
-      <a href="https://twitter.com/assembly_net" target="_blank" rel="noopener" aria-label="Twitter">
-        <span class="icon-twitter" aria-hidden="true"></span>
-      </a>
-      <a href="https://discord.assembly.sc/" target="_blank" rel="noopener" aria-label="Discord">
-        <span class="icon-discord" aria-hidden="true"></span>
-      </a>
-      <a href="https://www.linkedin.com/company/assembly-net" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <span class="icon-linkedin" aria-hidden="true"></span>
-      </a>
-      <a href="https://www.reddit.com/r/Assembly_net/" target="_blank" rel="noopener" aria-label="Reddit">
-        <span class="icon-reddit" aria-hidden="true"></span>
-      </a>
-      <a href="https://www.youtube.com/channel/UCr_BWKsiXkeOGfcSogh_fIQ" target="_blank" rel="noopener" aria-label="YouTube">
-        <span class="icon-youtube" aria-hidden="true"></span>
-      </a>
+      {{#if @custom.website_page}}
+        <a href={{ @custom.website_page }} target='_blank' rel='noopener' aria-label='Website'>
+          <span class='icon-globe' aria-hidden='true'></span>
+        </a>
+        {{/if}}
+      {{#if @custom.twitter_page}}
+        <a href={{ @custom.twitter_page }} target='_blank' rel='noopener' aria-label='Twitter'>
+            <span class='icon-twitter' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.discord_page}}
+        <a href={{ @custom.discord_page }} target='_blank' rel='noopener' aria-label='Discord'>
+            <span class='icon-discord' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.linkedin_page}}
+        <a href={{ @custom.linkedin_page }} target='_blank' rel='noopener' aria-label='Linkedin'>
+            <span class='icon-linkedin' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.reddit_page}}
+        <a href={{ @custom.reddit_page }} target='_blank' rel='noopener' aria-label='Reddit'>
+            <span class='icon-reddit' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.youtube_page}}
+            <a href='{{@custom.youtube_page}}' target='_blank' rel='noopener' aria-label='Youtube'>
+                <span class='icon-youtube' aria-hidden='true'></span>
+            </a>
+      {{/if}}
      </nav>
     <nav class="m-footer-links">
       <a href="/cookie-policy" target="_blank" rel="noopener" aria-label="Website">

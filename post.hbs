@@ -67,13 +67,23 @@ into the {body} of the default.hbs template --}}
                 </div>
               </div>
               {{content}}
-              <div>
-                <div>Follow us on our official channels for the latest updates:</div>
-                <a href="https://discord.iota.org/">Discord</a> |
-                <a href="https://twitter.com/iota">Twitter</a> |
-                <a href="https://linkedin.com/company/iotafoundation">LinkedIn</a> |
-                <a href="https://www.instagram.com/iotafoundation">Instagram</a> |
-                <a href="https://www.youtube.com/c/iotafoundation">YouTube</a>
+                <div>
+                  <div>Follow us on our official channels for the latest updates:</div>
+                  {{#if @custom.discord_page}}
+                    <a href={{ @custom.discord_page }}>Discord</a> |
+                  {{/if}}
+                  {{#if @site.twitter}}
+                  <a href={{ @site.twitter }}>Twitter</a> |
+                  {{/if}}
+                  {{#if @custom.linkedin_page}}
+                  <a href={{ @custom.linkedin_page }}>LinkedIn</a> |
+                  {{/if}}
+                  {{#if @custom.instagram_page}}
+                  <a href={{ @custom.instagram_page }}>Instagram</a> |
+                  {{/if}}
+                  {{#if @custom.youtube_page}}
+                  <a href={{ @custom.youtube_page }}>YouTube</a>
+                  {{/if}}
                 </div>
               {{!-- List of tags  --}}
               {{#if tags}}
