@@ -31,6 +31,26 @@ This footer template is shared across all the pages.
             <span class='icon-discord' aria-hidden='true'></span>
         </a>
       {{/if}}
+      {{#if @custom.linkedin_page}}
+        <a href={{ @custom.linkedin_page }} target='_blank' rel='noopener' aria-label='Linkedin'>
+            <span class='icon-linkedin' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.instagram_page}}
+        <a href={{ @custom.instagram_page }} target='_blank' rel='noopener' aria-label='Instagram'>
+            <span class='icon-instagram' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.youtube_page}}
+        <a href={{ @custom.youtube_page }} target='_blank' rel='noopener' aria-label='Youtube'>
+            <span class='icon-youtube' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.reddit_page}}
+        <a href={{ @custom.reddit_page }} target='_blank' rel='noopener' aria-label='Reddit'>
+            <span class='icon-reddit' aria-hidden='true'></span>
+        </a>
+      {{/if}}
       {{#if @custom.website_page}}
         <a href="{{ @custom.website_page }}/rss" aria-label="RSS">
           <span class="icon-rss" aria-hidden="true"></span>
