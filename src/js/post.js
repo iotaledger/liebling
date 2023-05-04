@@ -199,8 +199,8 @@ $(() => {
 
 const hideHardCodedFollowUs = () => {
   $("p").filter(function () {
-    return $(this).text().includes("Follow us on our official channels for the latest updates:");
-  }).hide();
+    return $(this).text().includes("Follow us on our official channels");
+  }).hide().next('p').hide();
 }
 
 $(window).on('load', () => {
