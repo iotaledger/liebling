@@ -72,14 +72,20 @@ into the {body} of the default.hbs template --}}
                   {{#if @custom.discord_page}}
                     <a href={{ @custom.discord_page }}>Discord</a> |
                   {{/if}}
-                  {{#if @site.twitter}}
-                  <a href={{ @site.twitter }}>Twitter</a> |
+                  {{#if @custom.twitter}}
+                  <a href={{ @custom.twitter }}>Twitter</a> |
                   {{/if}}
                   {{#if @custom.linkedin_page}}
                   <a href={{ @custom.linkedin_page }}>LinkedIn</a> |
                   {{/if}}
                   {{#if @custom.instagram_page}}
                   <a href={{ @custom.instagram_page }}>Instagram</a> |
+                  {{/if}}
+                  {{#if @custom.facebook_page}}
+                  <a href={{ @custom.facebook_page }}>Facebook</a> |
+                  {{/if}}
+                  {{#if @custom.reddit_page}}
+                  <a href={{ @custom.reddit_page }}>Reddit</a> |
                   {{/if}}
                   {{#if @custom.youtube_page}}
                   <a href={{ @custom.youtube_page }}>YouTube</a>
