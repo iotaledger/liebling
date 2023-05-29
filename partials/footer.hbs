@@ -8,26 +8,56 @@ This footer template is shared across all the pages.
         {{navigation type="secondary"}}
       </nav>
     {{/if}} --}}
+    {{#if @custom.website_page}}
      <div class="m-footer__logo">
-      <a href="http://shimmer.network/" target="_blank" rel="noopener" aria-label="Website">
+      <a href={{ @custom.website_page }} target="_blank" rel="noopener" aria-label="Website">
         <img src={{asset "images/Shimmer_Logo.svg"}}>
       </a>
     </div>
+    {{/if}}
     <nav class="m-footer-social">
-       <a href="http://shimmer.network/" target="_blank" rel="noopener" aria-label="Website">
-        <span class="icon-globe" aria-hidden="true"></span>
-      </a>
-      <a href="https://twitter.com/shimmernet" target="_blank" rel="noopener" aria-label="Twitter">
-        <span class="icon-twitter" aria-hidden="true"></span>
-      </a>
-      <a href="https://discord.iota.org/" target="_blank" rel="noopener" aria-label="Discord">
-        <span class="icon-discord" aria-hidden="true"></span>
-      </a>
-      <a href="{{@site.url}}/rss" aria-label="RSS">
-        <span class="icon-rss" aria-hidden="true"></span>
-      </a>  
-       {{#if @site.facebook}}
-        <a href="{{facebook_url @site.facebook}}" target="_blank" rel="noopener" aria-label="Facebook">
+      {{#if @custom.website_page}}
+        <a href={{ @custom.website_page }} target='_blank' rel='noopener' aria-label='Website'>
+          <span class='icon-globe' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.twitter_page}}
+        <a href={{ @custom.twitter_page }} target='_blank' rel='noopener' aria-label='Twitter'>
+            <span class='icon-twitter' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.discord_page}}
+        <a href={{ @custom.discord_page }} target='_blank' rel='noopener' aria-label='Discord'>
+            <span class='icon-discord' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.linkedin_page}}
+        <a href={{ @custom.linkedin_page }} target='_blank' rel='noopener' aria-label='Linkedin'>
+            <span class='icon-linkedin' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.instagram_page}}
+        <a href={{ @custom.instagram_page }} target='_blank' rel='noopener' aria-label='Instagram'>
+            <span class='icon-instagram' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.youtube_page}}
+        <a href={{ @custom.youtube_page }} target='_blank' rel='noopener' aria-label='Youtube'>
+            <span class='icon-youtube' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.reddit_page}}
+        <a href={{ @custom.reddit_page }} target='_blank' rel='noopener' aria-label='Reddit'>
+            <span class='icon-reddit' aria-hidden='true'></span>
+        </a>
+      {{/if}}
+      {{#if @custom.website_page}}
+        <a href="{{ @custom.website_page }}/rss" aria-label="RSS">
+          <span class="icon-rss" aria-hidden="true"></span>
+        </a>
+      {{/if}}
+      {{#if @custom.facebook_page}}
+        <a href={{ @custom.website_page }} target="_blank" rel="noopener" aria-label="Facebook">
           <span class="icon-facebook" aria-hidden="true"></span>
         </a>
       {{/if}}
