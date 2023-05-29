@@ -110,18 +110,32 @@ const prepareProgressCircle = () => {
 }
 
 $(() => {
+  // --> post deprecation
+    if ($('.disclamer-deprecated-post').length > 0) {
+      addNoIndexMetaTag()
+  } else {
+    const postPublishedDate = new Date($('.js-date-published')[0].innerText).getTime()
+    const today = new Date().getTime()
+    // if a post is older than two years, add a disclaimer
+    if (today - postPublishedDate > 2 * 365 * 24 * 60 * 60 * 1000) {
+      $('#header').append(
+        '<div class="disclamer-deprecated-post">Disclaimer: This blog post has been marked as deprecated, therefore some of the content might be out of date.</div>'
+      )
+      addNoIndexMetaTag()
+    }
+  }
+  function addNoIndexMetaTag() {
+    let metaElement = document.createElement('meta')
+    metaElement.setAttribute('name', 'robots')
+    metaElement.setAttribute('content', 'noindex, nofollow')
+    document.getElementsByTagName('head')[0].prepend(metaElement)
+  }
+  // <-- end of post deprecation
+  
   $aosWrapper = $('.js-aos-wrapper')
   const $scrollButton = $('.js-scrolltop')
   const $recommendedSlider = $('.js-recommended-slider')
 
-  const postPublishedDate = new Date($('.js-date-published')[0].innerText).getTime()
-  const today = new Date().getTime()
-
-  // if a post is older than a year, add a disclaimer
-  if(today - postPublishedDate > 365*24*60*60*1000) {
-    $('#header').append('<div class="post-disclaimer js-disclaimer">Disclaimer: This blog post was originally posted over a year ago, therefore some of the content might be out of date.</div>')
-  }
-  
   fitvids('.js-post-content')
 
   adjustImageGallery()
@@ -207,3 +221,5 @@ $(window).on('load', () => {
   prepareProgressCircle()
   hideHardCodedFollowUs()
 })
+
+
