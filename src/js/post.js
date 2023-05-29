@@ -109,7 +109,16 @@ const prepareProgressCircle = () => {
   }, 300)
 }
 
+const hideHardCodedFollowUs = () => {
+  $("p").filter(function () {
+    return $(this).text().includes("Follow us on our official channels");
+  }).hide().next('p').hide();
+}
+
 $(() => {
+
+  hideHardCodedFollowUs();
+  
   // --> post deprecation
     if ($('.disclamer-deprecated-post').length > 0) {
       addNoIndexMetaTag()
@@ -211,15 +220,7 @@ $(() => {
   window.addEventListener('resize', onResizing, { passive: true })
 })
 
-const hideHardCodedFollowUs = () => {
-  $("p").filter(function () {
-    return $(this).text().includes("Follow us on our official channels");
-  }).hide().next('p').hide();
-}
-
 $(window).on('load', () => {
   prepareProgressCircle()
-  hideHardCodedFollowUs()
 })
-
 
