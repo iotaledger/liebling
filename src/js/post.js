@@ -114,7 +114,7 @@ $(() => {
   const $scrollButton = $('.js-scrolltop')
   const $recommendedSlider = $('.js-recommended-slider')
 
-  if ($('.by-tag').length === 0) {
+  if ($('.disclamer-deprecated-post').length === 0) {
     const postPublishedDate = new Date($('.js-date-published')[0].innerText).getTime()
     const today = new Date().getTime()
 
