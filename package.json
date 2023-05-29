@@ -25,6 +25,40 @@
       "xl": {
         "width": 2000
       }
+    },
+    "custom": {
+      "discord_page": {
+        "type": "text",
+        "default": ""
+      },
+      "reddit_page":{
+        "type": "text",
+        "default": ""
+      },
+      "linkedin_page": {
+        "type": "text",
+        "default": ""
+      },
+      "instagram_page": {
+        "type": "text",
+        "default": ""
+      },
+      "youtube_page": {
+        "type": "text",
+        "default": ""
+      },
+      "facebook_page": {
+        "type": "text",
+        "default": ""
+      },
+      "twitter_page": {
+        "type": "text",
+        "default": ""
+      },
+      "website_page": {
+        "type": "text",
+        "default": ""
+      }
     }
   },
   "demo": "https://liebling.eduardogomez.io",
