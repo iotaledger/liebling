@@ -109,7 +109,16 @@ const prepareProgressCircle = () => {
   }, 300)
 }
 
+const hideHardCodedFollowUs = () => {
+  $("p").filter(function () {
+    return $(this).text().includes("Follow us on our official channels");
+  }).hide().next('p').hide();
+}
+
 $(() => {
+
+  hideHardCodedFollowUs() 
+  
   $aosWrapper = $('.js-aos-wrapper')
   const $scrollButton = $('.js-scrolltop')
   const $recommendedSlider = $('.js-recommended-slider')
@@ -197,13 +206,8 @@ $(() => {
   window.addEventListener('resize', onResizing, { passive: true })
 })
 
-const hideHardCodedFollowUs = () => {
-  $("p").filter(function () {
-    return $(this).text().includes("Follow us on our official channels");
-  }).hide().next('p').hide();
-}
-
 $(window).on('load', () => {
   prepareProgressCircle()
   hideHardCodedFollowUs()
 })
+
