@@ -112,7 +112,7 @@ const prepareProgressCircle = () => {
 const hideHardCodedFollowUs = () => {
   $("p").filter(function () {
     const text = $(this).text();
-    return text.includes("Follow Assembly on our official channels") || text.includes("Follow Assembly on the official channels");
+    return text.includes("Follow Assembly on our official channels") || text.includes("Follow Assembly on the official channels") || text.includes("Follow us on our official channels");
   }).hide().next('p').hide();
 }
 
