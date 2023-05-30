@@ -111,7 +111,8 @@ const prepareProgressCircle = () => {
 
 const hideHardCodedFollowUs = () => {
   $("p").filter(function () {
-    return $(this).text().includes("Follow us on our official channels");
+    const text = $(this).text();
+    return text.includes("Follow us on our official channels") || text.includes("Follow the IOTA Foundation on our official channels");
   }).hide().next('p').hide();
 }
 
