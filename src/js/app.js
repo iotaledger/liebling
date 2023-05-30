@@ -163,6 +163,19 @@ $(() => {
         }
     }
 
+    const openExternalLinksInDifferentTab = () => {
+        let links = $('a');
+        $.each(links, function (index, value) {
+            if (!value.href.includes(window.location.hostname)) {
+                if ($(value).parents('#cookieblock', '#cookieblock__banner__wrapper', '#cookieblock__banner').length > 0) {
+                    value.target = '_self';
+                } else {
+                    value.target = '_blank';
+                }
+            }
+        });
+    }
+
     $openMenu.on('click', () => {
         $header.addClass('mobile-menu-opened')
         $menu.addClass('opened')
@@ -185,19 +198,6 @@ $(() => {
 
         }
     })
-
-    const openExternalLinksInDifferentTab = () => {
-        let links = $('a');
-        $.each(links, function (index, value) {
-            if (!value.href.includes(window.location.hostname)) {
-                if ($(value).parents('#cookieblock', '#cookieblock__banner__wrapper', '#cookieblock__banner').length > 0) {
-                    value.target = '_blank';
-                } else {
-                    value.target = '_self';
-                }
-            }
-        });
-    }
 
     $openSearch.on('click', () => {
         $search.addClass('opened')
