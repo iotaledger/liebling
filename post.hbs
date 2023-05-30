@@ -73,25 +73,25 @@ into the {body} of the default.hbs template --}}
                 <div>
                   <div>Follow us on our official channels for the latest updates:</div>
                   {{#if @custom.discord_page}}
-                    <a href={{ @custom.discord_page }}>Discord</a> |
+                    <a href={{ @custom.discord_page }} target='_blank' rel='noopener'>Discord</a> |
                   {{/if}}
-                  {{#if @custom.twitter}}
-                  <a href={{ @custom.twitter }}>Twitter</a> |
+                  {{#if @custom.twitter_page}}
+                  <a href={{ @custom.twitter_page }} target='_blank' rel='noopener'>Twitter</a> |
                   {{/if}}
                   {{#if @custom.linkedin_page}}
-                  <a href={{ @custom.linkedin_page }}>LinkedIn</a> |
+                  <a href={{ @custom.linkedin_page }} target='_blank' rel='noopener'>LinkedIn</a> |
                   {{/if}}
                   {{#if @custom.instagram_page}}
-                  <a href={{ @custom.instagram_page }}>Instagram</a> |
+                  <a href={{ @custom.instagram_page }} target='_blank' rel='noopener'>Instagram</a> |
                   {{/if}}
                   {{#if @custom.facebook_page}}
-                  <a href={{ @custom.facebook_page }}>Facebook</a> |
+                  <a href={{ @custom.facebook_page }} target='_blank' rel='noopener'>Facebook</a> |
                   {{/if}}
                   {{#if @custom.reddit_page}}
-                  <a href={{ @custom.reddit_page }}>Reddit</a> |
+                  <a href={{ @custom.reddit_page }} target='_blank' rel='noopener'>Reddit</a> |
                   {{/if}}
                   {{#if @custom.youtube_page}}
-                  <a href={{ @custom.youtube_page }}>YouTube</a>
+                  <a href={{ @custom.youtube_page }} target='_blank' rel='noopener'>YouTube</a>
                   {{/if}}
                 </div>
               {{!-- List of tags  --}}
