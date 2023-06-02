@@ -61,6 +61,11 @@ This footer template is shared across all the pages.
               <span class="icon-facebook" aria-hidden="true"></span>
             </a>
           {{/if}}
+          {{#if @custom.coinmarketcap_page}}
+            <a href={{ @custom.coinmarketcap_page }} target="_blank" rel="noopener" aria-label="CoinMarketCap">
+               <img src={{asset 'images/coinmarketcap-logo.svg'}} />
+            </a>
+          {{/if}}
         </nav>
 
         <p class='m-footer-copyright' id='foundationLegal'></p>
