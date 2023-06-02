@@ -58,6 +58,10 @@
       "website_page": {
         "type": "text",
         "default": ""
+      },
+      "coinmarketcap_page": {
+        "type": "text",
+        "default": ""
       }
     }
   },
