@@ -95,6 +95,20 @@
     aspect-ratio: 16/9;
 }
 
+@supports not (aspect-ratio: 16/9) {
+    .m-article-card__picture {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .m-article-card__picture{
+        content: "";
+        display: block;
+        padding-top: 56.25%;
+    }
+
+}
+
 .m-article-card__picture-link {
     position: absolute;
     top: 0;
