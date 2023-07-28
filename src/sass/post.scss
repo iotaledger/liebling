@@ -22,8 +22,7 @@
 
 .post-template .m-hero.with-picture {
     min-height: unset;
-    padding: 0;
-    padding-bottom: 45%;
+    aspect-ratio: 16/9;
     margin-top: 50px;
 }
 
@@ -31,6 +30,24 @@
     .post-template .m-hero.with-picture {
         margin-top: 65px;
     }
+}
+
+@supports not (aspect-ratio: 16/9) {
+    .post-template .m-hero.with-picture {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .post-template .m-hero.with-picture{
+        content: "";
+        display: block;
+        padding-top: 56.25%;
+    }
+
+    .post-template .m-hero.with-picture img {
+        object-fit: fill;
+    }
+
 }
 
 .disclamer-deprecated-post {
