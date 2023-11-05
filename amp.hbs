@@ -712,6 +712,19 @@
             content: "\e907";
         }
 
+        .disclamer-deprecated-post {
+            margin: 30px 0;
+            padding: 15px 20px;
+            color: var(--primary-text-color);
+            text-align: center;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+            background-color: rgba(231, 81, 81, 0.3);
+            border: 1px solid rgba(231, 81, 81, 0.5);
+            border-radius: 5px;
+            display: block;
+        }
+
         @font-face {
             font-family: 'icomoon';
             font-weight: normal;
@@ -1072,7 +1085,8 @@
                 visibility: visible
             }
         }
-    </style><noscript>
+    </style>
+    <noscript>
         <style amp-boilerplate>
             body {
                 -webkit-animation: none;
@@ -1082,6 +1096,35 @@
             }
         </style>
     </noscript>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // --> post deprecation
+            if (document.querySelectorAll('.disclamer-deprecated-post').length > 0) {
+                addNoIndexMetaTag();
+            } else {
+                const postDateElements = document.getElementsByClassName('post-date');
+                const postDateElement = postDateElements[0];
+                const postPublishedDate = new Date(postDateElement.getAttribute('datetime')).getTime();
+                const today = new Date().getTime();
+                // if a post is older than two years, add a disclaimer
+                if (today - postPublishedDate > 2 * 365 * 24 * 60 * 60 * 1000) {
+                    const header = document.querySelector('.post-header');
+                    const disclaimer = document.createElement('div');
+                    disclaimer.className = 'disclamer-deprecated-post';
+                    disclaimer.innerHTML = 'Disclaimer: This blog post has been marked as deprecated, therefore some of the content might be out of date.';
+                    header.appendChild(disclaimer);
+                    addNoIndexMetaTag();
+                }
+            }
+
+            function addNoIndexMetaTag() {
+                let metaElement = document.createElement('meta');
+                metaElement.setAttribute('name', 'robots');
+                metaElement.setAttribute('content', 'noindex, nofollow');
+                document.getElementsByTagName('head')[0].prepend(metaElement);
+            }
+        });
+    </script>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
 
     {{amp_components}}
@@ -1117,6 +1160,9 @@
                     <time class="post-date" datetime="{{date format=" YYYY-MM-DD"}}">{{date format="MMM DD,
                         YYYY"}}</time>
                 </section>
+                {{#has tag="#deprecated"}}
+                    <div class="disclamer-deprecated-post">Disclaimer: This blog post has been marked as deprecated, therefore some of the content might be out of date.</div>
+                {{/has}}
             </header>
 
             <section class="post-content">
