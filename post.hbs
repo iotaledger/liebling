@@ -27,14 +27,22 @@ into the {body} of the default.hbs template --}}
     {{!-- Inject styles of the hero image to make it responsive --}}
     {{> hero background=feature_image}}
     </section>
+    {{#if feature_image}}
+      {{#if feature_image_caption}}
+        <div class="l-wrapper in-caption">
+          <p class="m-small-text align-center">
+            {{feature_image_caption}}
+          </p>
+        </div>
+      {{/if}}
+    {{/if}}
   {{/post}}
   
   <article>
     <div class="l-content in-post">
       {{!-- Everything inside the #post tags pulls data from the post --}}
       {{#post}}
-        <div class="l-wrapper in-post {{#unless feature_image}}no-image{{/unless}} js-aos-wrapper" data-aos="fade-up"
-          data-aos-delay="300">
+        <div class="l-wrapper in-post {{#unless feature_image}}no-image{{/unless}} js-animation-wrapper" data-animate="fade-up">
           <div
             class="l-post-content js-progress-content">
             <header id="header" class="m-heading">
@@ -180,76 +188,48 @@ into the {body} of the default.hbs template --}}
             </div>
           </div>
         </section>
-        {{!-- If you want to embed comments, this is a good place to do it! --}}
+        {{!-- Native comments --}}
+        {{#if comments}}
+          <div class="m-comments">
+            <div class="l-wrapper in-comments js-native-comments">
+              {{comments}}
+            </div>
+          </div>
+        {{/if}}
+        {{!-- Third-party comments --}}
         {{!--
           <section class="m-comments">
-            <div class="m-load-comments__iframe l-wrapper in-comments js-comments-iframe">
-              <div id="disqus_thread"></div>
-              <script>
-                var disqus_config = function () {
-                  this.page.url = "{{url absolute="true"}}";
-                  this.page.identifier = "ghost-{{comment_id}}"
-                };
-                (function () {
-                  var d = document, s = d.createElement('script');
-                  s.src = 'https://CHANGETHIS.disqus.com/embed.js';
-                  s.setAttribute('data-timestamp', +new Date());
-                  (d.head || d.body).appendChild(s);
-                })();
-              </script>
+            <div class="l-wrapper in-comments js-third-party-comments">
+              <!-- Paste here the provided code snippet -->
             </div>
           </section>
         --}}
       {{/post}}
       {{!-- Related posts --}}
       {{#if post.tags.length}}
-        {{#get "posts" limit="3" filter="tags:[{{post.tags}}]+id:-{{post.id}}" include="tags,authors" as |related|}}
-          <section class="m-recommended">
-            <div class="l-wrapper in-recommended">
-              <h3 class="m-section-title in-recommended">{{t "Recommended for you"}}</h3>
-              <div class="m-recommended-articles">
-                <div class="m-recommended-slider glide js-recommended-slider">
-                  <div class="glide__track" data-glide-el="track">
-                    <div class="glide__slides">
+        {{#get "posts" limit="3" filter="tags:[{{post.tags}}]+id:-{{post.id}}" include="tags,authors" order="published_at desc" as |related|}}
+          {{#if related}}
+            <section class="m-recommended">
+              <div class="l-wrapper in-recommended">
+                <h3 class="m-section-title in-recommended">{{t "Recommended for you"}}</h3>
+                <div class="m-recommended-articles">
+                  <div class="m-recommended-slider swiper js-recommended-slider">
+                    <div class="swiper-wrapper">
                       {{!-- The tag below iterates over all the related posts --}}
                       {{> "loop"}}
                     </div>
-                  </div>
-                  <div data-glide-el="controls" class="glide__arrows js-controls">
-                    <button data-glide-dir="<" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="{{t "Previous"}}">
+                    <button class="m-icon-button filled in-recommended-articles swiper-button-prev" aria-label="{{t "Previous"}}">
                       <span class="icon-arrow-left" aria-hidden="true"></span>
                     </button>
-                    <button data-glide-dir=">" class="m-icon-button filled in-recommended-articles glide-next" aria-label="{{t "Next"}}">
+                    <button class="m-icon-button filled in-recommended-articles swiper-button-next" aria-label="{{t "Next"}}">
                       <span class="icon-arrow-right" aria-hidden="true"></span>
                     </button>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          {{/if}}
         {{/get}}
-      {{else}}
-        <section class="m-recommended">
-          <div class="l-wrapper in-recommended">
-            <h3 class="m-section-title in-recommended">{{t "Recommended for you"}}</h3>
-            <div class="m-recommended-articles">
-              <div class="m-recommended-slider glide js-recommended-slider">
-                <div class="glide__track" data-glide-el="track">
-                  <div class="glide__slides">
-                    <div class="m-recommended-slider__item glide__slide">
-                      <div class="m-heading no-margin">
-                        <h3>{{t "No posts found"}}</h3>
-                        <p>
-                          {{t "Apparently there are no posts at the moment, check again later."}}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       {{/if}}
     </div>
   </article>

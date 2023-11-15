@@ -1,19 +1,21 @@
 /** Global styles */
 
 body {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100vh;
-    color: var(--primary-foreground-color);
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-family: 'Inter', sans-serif;
-    font-display: swap;
-    overflow-x: hidden;
-    background-color: var(--page-bg-color);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  color: var(--primary-foreground-color);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-display: swap;
+  overflow-x: hidden;
+  background-color: var(--background-color);
+  padding-top: var(--announcement-bar-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @include transition(padding-top linear 0.2s);
 
     &.share-menu-displayed {
         padding-bottom: 45px;

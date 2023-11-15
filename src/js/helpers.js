@@ -53,33 +53,39 @@ export const adjustImageGallery = () => {
 }
 
 export const managePostImages = ($) => {
-    $('.js-post-content')
-        .find('img')
-        .each(function() {
-            // TODO: improve sizings for mobile as now is taking images at w1000
-            $(this).attr('sizes', '(max-width: 720px) 720px')
-            if (
-                !$(this)
-                    .closest('figure')
-                    .hasClass('kg-bookmark-card') &&
-                !$(this)
-                    .parent()
-                    .is('a')
-            ) {
-                $(this).addClass('js-zoomable')
-            }
+  $('.js-post-content')
+      .find('img')
+      .each(function() {
+          // TODO: improve sizings for mobile as now is taking images at w1000
+          $(this).attr('sizes', '(max-width: 720px) 720px')
 
-            const $figcaption = $(this)
-                .parent()
-                .find('figcaption')
+          if (
+              !$(this)
+                  .closest('figure')
+                  .hasClass('kg-bookmark-card') &&
+              !$(this)
+                  .closest('figure')
+                  .hasClass('kg-nft-card') &&
+              !$(this)
+                  .parent()
+                  .is('a') &&
+              !$(this).hasClass('kg-product-card-image') &&
+              !$(this).hasClass('kg-audio-thumbnail')
+          ) {
+              $(this).addClass('js-zoomable');
+          }
 
-            if ($figcaption) {
-                $(this).attr('alt', $figcaption.text())
-            } else {
-                $(this).attr('alt', '')
-            }
-        })
-}
+          const $figcaption = $(this)
+              .parent()
+              .find('figcaption');
+
+          if ($figcaption) {
+              $(this).attr('alt', $figcaption.text());
+          } else {
+              $(this).attr('alt', '');
+          }
+      });
+};
 
 export const makeImagesZoomable = ($, mediumZoom) => {
     const zoom = mediumZoom('.js-zoomable')

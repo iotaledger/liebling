@@ -1,21 +1,22 @@
-import $ from 'jquery'
-import Headroom from "headroom.js"
 import Glide, {
-    Swipe,
-    Breakpoints
-} from '@glidejs/glide/dist/glide.modular.esm'
+  Breakpoints,
+  Swipe
+} from '@glidejs/glide/dist/glide.modular.esm';
+import AOS from 'aos';
+import Headroom from "headroom.js";
+import $ from 'jquery';
+import shave from 'shave';
+import 'swiper/css';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
-import shave from 'shave'
-import AOS from 'aos'
-import * as Typesense from 'typesense/dist/typesense.min'
+import * as Typesense from 'typesense/dist/typesense.min';
 import {
-    isRTL,
-    formatDate,
-    isDarkMode,
-    isMobile,
-    getParameterByName
-} from './helpers'
+  formatDate,
+  getParameterByName,
+  isDarkMode,
+  isMobile,
+  isRTL
+} from './helpers';
 
 $(() => {
     if (isRTL()) {
@@ -24,6 +25,7 @@ $(() => {
 
     const $body = $('body')
     const $header = $('.js-header')
+    const $announcementBar = $('#announcement-bar-root');
     const $openMenu = $('.js-open-menu')
     const $closeMenu = $('.js-close-menu')
     const $menu = $('.js-menu')
@@ -43,8 +45,10 @@ $(() => {
     const $mainNav = $('.js-main-nav')
     const $mainNavLeft = $('.js-main-nav-left')
     const $newsletterElements = $('.js-newsletter')
+    const $nativeComments = $('.js-native-comments > div > iframe')[0];
     const currentSavedTheme = localStorage.getItem('theme')
 
+    let fuse = null;
     let postsCollection = null
     let submenuIsOpen = false
     let secondaryMenuTippy = null
@@ -315,6 +319,40 @@ $(() => {
             }
         })
         headroom.init()
+    }
+
+    if ($announcementBar.length > 0) {
+      $header.addClass('with-announcement-bar');
+  
+      setTimeout(() => {
+        $header.removeAttr('data-animate');
+      }, 500);
+  
+      const barMutationObserver = new MutationObserver((e) => {
+        if (e[0].addedNodes.length) {
+          $announcementBar.detach().prependTo($header);
+          const barHeight = $announcementBar.height();
+          document.documentElement.style.setProperty('--announcement-bar-height', `${barHeight}px`);
+        }
+  
+        if (e[0].removedNodes.length) {
+          document.documentElement.style.setProperty('--announcement-bar-height', '0px');
+        }
+      });
+  
+      const barResizeObserver = new ResizeObserver((entries) => {
+        entries.forEach((entry) => {
+          const barHeight = entry.contentRect.height;
+          document.documentElement.style.setProperty('--announcement-bar-height', `${barHeight}px`);
+        })
+      });
+  
+      barMutationObserver.observe($announcementBar[0], { childList: true });
+      barResizeObserver.observe($announcementBar[0]);
+    } else {
+      setTimeout(() => {
+        $header.removeAttr('data-animate');
+      }, 500);
     }
 
     if ($recentSlider.length > 0) {
