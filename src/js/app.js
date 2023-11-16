@@ -1,6 +1,6 @@
 import Glide, {
-  Breakpoints,
-  Swipe
+    Breakpoints,
+    Swipe
 } from '@glidejs/glide/dist/glide.modular.esm';
 import AOS from 'aos';
 import Headroom from "headroom.js";
@@ -11,11 +11,10 @@ import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import * as Typesense from 'typesense/dist/typesense.min';
 import {
-  formatDate,
-  getParameterByName,
-  isDarkMode,
-  isMobile,
-  isRTL
+    formatDate,
+    getParameterByName,
+    isMobile,
+    isRTL
 } from './helpers';
 
 $(() => {
@@ -288,16 +287,12 @@ $(() => {
     })
 
     if (currentSavedTheme) {
-        $('html').attr('data-theme', currentSavedTheme)
-
         if (currentSavedTheme === 'dark') {
-            $toggleDarkMode.attr('checked', true)
+          $toggleDarkMode.each(function() {
+            $(this).attr('checked', true);
+          });
         }
-    } else {
-        if (isDarkMode()) {
-            $toggleDarkMode.attr('checked', true)
-        }
-    }
+      }
 
     if ($header.length > 0) {
         const headroom = new Headroom($header[0], {
