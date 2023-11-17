@@ -1,11 +1,7 @@
-import Glide, {
-    Breakpoints,
-    Swipe
-} from '@glidejs/glide/dist/glide.modular.esm';
-import AOS from 'aos';
 import Headroom from "headroom.js";
 import $ from 'jquery';
 import shave from 'shave';
+import Swiper, { FreeMode, A11y } from 'swiper';
 import 'swiper/css';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
@@ -31,7 +27,7 @@ $(() => {
     const $toggleSubmenu = $('.js-toggle-submenu')
     const $submenuOption = $('.js-submenu-option')[0]
     const $submenu = $('.js-submenu')
-    const $recentSlider = $('.js-recent-slider')
+    const $recentSlider = $('.js-recent-slider');
     const $openSecondaryMenu = $('.js-open-secondary-menu')
     const $openSearch = $('.js-open-search')
     const $closeSearch = $('.js-close-search')
@@ -351,13 +347,12 @@ $(() => {
     }
 
     if ($recentSlider.length > 0) {
-        const recentSlider = new Glide('.js-recent-slider', {
-            type: 'slider',
-            rewind: false,
-            perView: 4,
-            swipeThreshold: false,
-            dragThreshold: false,
+        const recentSwiper = new Swiper('.js-recent-slider', {
+            modules: [FreeMode, A11y],
+            freeMode: true,
+            slidesPerView: 4,
             gap: 0,
+            a11y: true,
             direction: isRTL() ? 'rtl' : 'ltr',
             breakpoints: {
                 1024: {
@@ -377,23 +372,13 @@ $(() => {
                     dragThreshold: 120,
                     peek: { before: 0, after: 115 }
                 }
+            },
+            on: {
+              init: function() {
+                shave('.js-recent-article-title', 50);
+              }
             }
-        })
-
-        recentSlider.on('mount.after', () => {
-            shave('.js-recent-article-title', 50)
-        })
-
-        recentSlider.mount({ Swipe, Breakpoints })
-    }
-
-    if (typeof disableFadeAnimation === 'undefined' || !disableFadeAnimation) {
-        AOS.init({
-            once: true,
-            startEvent: 'DOMContentLoaded',
-        })
-    } else {
-        $('[data-aos]').addClass('no-aos-animation')
+          });
     }
 
     if ($openSecondaryMenu.length > 0) {
