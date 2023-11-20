@@ -5,6 +5,7 @@
     z-index: 1;
     background: none;
     visibility: visible;
+    z-index: 1;
 
     &:hover {
         .m-featured-article__author {
@@ -25,8 +26,8 @@
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: transparent;
     z-index: 1;
-    background: none;
 
     div {
         width: 100%;
@@ -120,7 +121,7 @@
     background-color: $white;
     border-radius: 50%;
     z-index: 2;
-    visibility: hidden;
+    // visibility: hidden;
 
     @include respond-to('medium') {
         justify-content: flex-start;
