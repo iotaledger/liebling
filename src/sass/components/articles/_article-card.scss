@@ -88,11 +88,13 @@
 
 .m-article-card__picture {
     position: relative;
+    height: 200px;
     border-radius: 0;
     background-color: var(--background-color);
     overflow: hidden;
+    @include transform(translateZ(0));
     width: 100%;
-    aspect-ratio: 16/9;
+    padding-top: 56.25%;
 }
 
 @supports not (aspect-ratio: 16/9) {

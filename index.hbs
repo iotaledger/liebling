@@ -67,7 +67,7 @@ into the {body} of the default.hbs template --}}
                           <div id="featured-bg-{{id}}"></div>
                         {{/if}}
                       </div>
-                      <div class="m-featured-article__meta">
+                      {{!-- <div class="m-featured-article__meta">
                         <a href="{{primary_author.url}}" class="m-featured-article__author js-tooltip" aria-label="{{primary_author.name}}" data-tippy-content="{{t "Posted by"}} {{primary_author.name}} {{authors autolink="false" from="2" prefix=(t "Among with") separator=" , "}}">
                           {{#if primary_author.profile_image}}
                             <div style="background-image: url({{img_url primary_author.profile_image size="xs"}});"></div>
@@ -78,7 +78,7 @@ into the {body} of the default.hbs template --}}
                         {{#if primary_tag}}
                           <a href="{{primary_tag.url}}" class="m-featured-article__tag">{{primary_tag.name}}</a>
                         {{/if}}
-                      </div>
+                      </div> --}}
                       <div class="m-featured-article__ribbon">
                         <span class="icon-star"></span>
                         <span>{{t "Featured"}}</span>
