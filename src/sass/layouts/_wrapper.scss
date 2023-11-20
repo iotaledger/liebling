@@ -31,6 +31,8 @@
   }
 
   &.in-comments {
+    color: var(--primary-foreground-color);
+
     @include respond-to('medium') {
       max-width: 820px;
     }
@@ -54,4 +56,8 @@
   @include respond-to('medium') {
     padding-top: 80px;
   }
+}
+
+.l-wrapper.in-caption {
+  padding-top: 10px;
 }

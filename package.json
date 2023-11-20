@@ -6,6 +6,9 @@
   },
   "config": {
     "posts_per_page": 10,
+    "card_assets": {
+      "exclude": ["bookmark", "gallery"]
+    },
     "image_sizes": {
       "xxs": {
         "width": 30
@@ -62,6 +65,13 @@
       "coinmarketcap_page": {
         "type": "text",
         "default": ""
+      },
+      "dark_mode_logo": {
+        "type": "image"
+      },
+      "enable_native_search": {
+        "type": "boolean",
+        "default": false
       }
     }
   },
@@ -91,5 +101,5 @@
     "desktop": "assets/screenshot-desktop.jpg",
     "mobile": "assets/screenshot-mobile.jpg"
   },
-  "version": "2.0.0"
+  "version": "2.1.6"
 }

@@ -1,35 +1,19 @@
 let mix = require('laravel-mix')
 
 mix.options({
-  terser: {
-    extractComments: false,
-  }
-});
-
-mix.webpackConfig({
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: Config.babel()
-                    }
-                ]
-            }
-        ]
+    terser: {
+        extractComments: false
     }
 })
 
-mix.js('js/helpers.js', 'js/')
+mix.setPublicPath('../assets')
+    .js('js/helpers.js', 'js/')
     .js('js/app.js', 'js/')
     .js('js/home.js', 'js/')
     .js('js/post.js', 'js/')
     .js('js/page.js', 'js/')
     .extract()
     .setResourceRoot('/assets')
-    .setPublicPath('../assets')
     .sass('sass/app.scss', 'css/')
     .sass('sass/home.scss', 'css/')
     .sass('sass/listing.scss', 'css/')
@@ -46,5 +30,5 @@ mix.js('js/helpers.js', 'js/')
     .copy('js/vendor/content-api.min.js', '../assets/js/vendor/')
     .browserSync({
         proxy: 'localhost:2368',
-        files: ['js/**/*.js', 'sass/**/*.scss', '../**/*.hbs']
+        files: ['js/**/*.js', 'sass/**/*.scss', '../**/*.hbs', '!../**/amp.hbs', '!../amp.hbs']
     })

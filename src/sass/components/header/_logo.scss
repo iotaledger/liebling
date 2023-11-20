@@ -1,15 +1,23 @@
 .m-logo {
-    display: inline-block;
-    height: 25px;
+  display: inline-block;
+  height: 32px;
 
-    svg {
-        width: auto;
-        max-width: 150px;
-        height: 100%;
-        object-fit: contain;
+  img {
+    width: auto;
+    max-width: 150px;
+    height: 100%;
+    object-fit: contain;
+
+    &.m-logo__image-light {
+      display: var(--toggle-darkmode-button-display-moon);
     }
 
-    &.in-mobile-topbar {
-        margin: 0 $mobile-space;
+    &.m-logo__image-dark {
+      display: var(--toggle-darkmode-button-display-sun);
     }
+  }
+
+  &.in-mobile-topbar {
+    margin: 0 $mobile-space;
+  }
 }

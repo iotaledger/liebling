@@ -1,53 +1,52 @@
-.m-featured-slider {
-    position: relative;
-    overflow: hidden !important;
-    height: calc(100vw * 9 / 16);
-    margin: -40px -#{$mobile-space} 40px;
-    @include transition(all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1));
-    @include bs(var(--article-shadow-normal));
+.m-featured-slider.swiper {
+  position: relative;
+  overflow: hidden !important;
+  height: calc(100vw * 9 / 16);
+  margin: -40px -#{$mobile-space} 40px;
+  @include transition(all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1));
+  @include bs(var(--article-shadow-normal));
 
-    &:hover {
-        @include respond-to('medium') {
-            @include transform(translateY(-5px));
-            @include bs(var(--article-shadow-hover));
-        }
-    }
+  &:hover {
+      @include respond-to('medium') {
+          @include transform(translateY(-5px));
+          @include bs(var(--article-shadow-hover));
+      }
+  }
 
-    @include respond-to('medium') {
-        width: calc(420px * 16 / 9);
-        height: 420px;
-        margin: -40px 10px 20px 10px;
-        border-radius: 0px;
-    }
+  @include respond-to('medium') {
+      width: calc(420px * 16 / 9);
+      height: 420px;
+      margin: -40px 10px 20px 10px;
+      border-radius: 10px;
+  }
 
-    @include respond-to('large') {
-        width: calc(420px * 16 / 9);
-        margin: 0 20px 40px 20px;
-        overflow: unset;
-    }
+  @include respond-to('large') {
+      width: calc(420px * 16 / 9);
+      margin: 0 20px 40px 20px;
+      overflow: unset;
+  }
 }
 
 .m-featured-slider:not(:root:root) {
-    overflow: hidden !important;
+  overflow: hidden !important;
 }
 
 .m-featured-slider__list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    height: 100%;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
 
-    @include respond-to('medium') {
-        border-radius: 0px;
-        overflow: hidden;
-    }
+  @include respond-to('medium') {
+      border-radius: 10px;
+  }
 }
 
 .m-featured-slider__list__item {
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 
-    @include respond-to('medium') {
-        border-radius: 0px;
-    }
+  @include respond-to('medium') {
+      border-radius: 10px;
+  }
 }

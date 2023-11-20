@@ -26,88 +26,83 @@ into the {body} of the default.hbs template --}}
 <main class="main-wrap">
   {{!-- Inject styles of the hero image to make it responsive --}}
   {{> hero background=@site.cover_image}}
-  <div class="m-hero__content" data-aos="fade-down">
+  <div class="m-hero__content" data-animate="fade-down">
     <h1 class="m-hero-title bigger">{{@site.title}}</h1>
     <div class="headline-stick size-l"></div>
     {{#if @site.description}}
       <p class="m-hero-description bigger">{{@site.description}}</p>
     {{/if}}
-    {{#if @site.members_enable}}
-    <a href="{{@site.url}}/newsletter" class="m-button filled js-newsletter">{{t "Subscribe"}}</a>
-    {{/if}}
+    {{!-- Uncomment the code below to add a custom CTA button to the homepage and add to config.custom --}}
+    {{!-- {{#if @custom.use_custom_cta}}
+      <a href="{{@custom.custom_cta_url}}" class="m-button filled">{{@custom.custom_cta_text}}</a>
+    {{else}} --}}
+      {{#if @site.members_enabled}}
+        <a href="{{@site.url}}/newsletter" class="m-button filled js-newsletter">{{t "Subscribe"}}</a>
+      {{/if}}
+    {{!-- {{/if}} --}}
   </div>
   </section>
   <div class="l-content">
-    <div class="l-wrapper" data-aos="fade-up" data-aos-delay="300">
+    <div class="l-wrapper" data-animate="fade-up">
       <div class="l-grid centered">
         {{#get "posts" filter="featured:true" include="authors,tags" limit="5" as |featured|}}
           {{#if featured}}
-            <div class="m-featured-slider glide js-featured-slider">
-              <div class="glide__track" data-glide-el="track">
-                <div class="m-featured-slider__list glide__slides">
-                  {{#foreach featured}}
-                    <div class="m-featured-slider__list__item glide__slide js-featured-slide">
-                      <article class="m-featured-article {{#unless feature_image}}no-picture{{/unless}}">
-                        <div class="m-featured-article__picture">
-                          {{#if feature_image}}
-                            <style>
+            <div class="m-featured-slider swiper js-featured-slider">
+              <div class="m-featured-slider__list swiper-wrapper">
+                {{#foreach featured}}
+                  <div class="m-featured-slider__list__item swiper-slide">
+                    <article class="m-featured-article {{#unless feature_image}}no-picture{{/unless}}">
+                      <div class="m-featured-article__picture">
+                        {{#if feature_image}}
+                          <style>
+                            #featured-bg-{{id}} {
+                              background-image: url({{img_url feature_image size='l'}});
+                            }
+                            @media(max-width: 768px) {
                               #featured-bg-{{id}} {
-                                background-image: url({{img_url feature_image size='l'}});
+                                background-image: url({{img_url feature_image size='m'}});
                               }
-                            
-                              @media(max-width: 768px) {
-                                #featured-bg-{{id}} {
-                                  background-image: url({{img_url feature_image size='m'}});
-                                }
-                              }
-                            </style>
-                            <div id="featured-bg-{{id}}"></div>
+                            }
+                          </style>
+                          <div id="featured-bg-{{id}}"></div>
+                        {{/if}}
+                      </div>
+                      <div class="m-featured-article__meta">
+                        <a href="{{primary_author.url}}" class="m-featured-article__author js-tooltip" aria-label="{{primary_author.name}}" data-tippy-content="{{t "Posted by"}} {{primary_author.name}} {{authors autolink="false" from="2" prefix=(t "Among with") separator=" , "}}">
+                          {{#if primary_author.profile_image}}
+                            <div style="background-image: url({{img_url primary_author.profile_image size="xs"}});"></div>
+                          {{else}}
+                            <div style="background-image: url({{asset "images/default-avatar-square-small.jpg"}});"></div>
                           {{/if}}
-                        </div>
-                        {{!-- <div class="m-featured-article__meta">
-                          <a href="{{primary_author.url}}" class="m-featured-article__author js-tooltip" aria-label="{{primary_author.name}}" data-tippy-content="{{t "Posted by"}} {{primary_author.name}} {{authors autolink="false" from="2" prefix=(t "Among with") separator=" , "}}">
-                            {{#if primary_author.profile_image}}
-                              <div style="background-image: url({{img_url primary_author.profile_image size="xs"}});"></div>
-                            {{else}}
-                              <div style="background-image: url({{asset "images/default-avatar-square-small.jpg"}});"></div>
-                            {{/if}}
-                          </a>
-                          {{#if primary_tag}}
-                            <a href="{{primary_tag.url}}" class="m-featured-article__tag">{{primary_tag.name}}</a>
-                          {{/if}}
-                        </div> --}}
-                        <div class="m-featured-article__ribbon">
-                          <span class="icon-star"></span>
-                          <span>{{t "Featured"}}</span>
-                        </div>
-                        <a href="{{url}}" class="m-featured-article__content">
-                          {{#if primary_tag}}
-                            <a href="{{primary_tag.url}}" class="m-featured-article__tag">
-                              {{primary_tag.name}}
-                            </a>
-                          {{/if}}
-                          <h2 class="m-featured-article__title js-featured-article-title" title="{{title}}">
-                            {{title}}
-                          </h2>
-                          <div class="m-featured-article__timestamp">
-                            <span>{{date published_at}}</span>
-                            <span> </span>
-                            <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
-                          </div>
                         </a>
-                      </article>
-                    </div>
-                  {{/foreach}}
-                </div>
+                        {{#if primary_tag}}
+                          <a href="{{primary_tag.url}}" class="m-featured-article__tag">{{primary_tag.name}}</a>
+                        {{/if}}
+                      </div>
+                      <div class="m-featured-article__ribbon">
+                        <span class="icon-star"></span>
+                        <span>{{t "Featured"}}</span>
+                      </div>
+                      <a href="{{url}}" class="m-featured-article__content">
+                        <h2 class="m-featured-article__title js-featured-article-title" title="{{title}}">
+                          {{title}}
+                        </h2>
+                        <div class="m-featured-article__timestamp">
+                          <span>{{date published_at timeago="true"}}</span>
+                          <span>&bull;</span>
+                          <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
+                        </div>
+                      </a>
+                    </article>
+                  </div>
+                {{/foreach}}
               </div>
-              <div data-glide-el="controls" class="glide__arrows js-featured-slider-controls">
-                <button data-glide-dir="<" class="m-icon-button in-featured-articles glide-prev js-featured-slider-previous" aria-label="{{t "Previous"}}">
-                  <span class="icon-arrow-left" aria-hidden="true"></span>
-                </button>
-                <button data-glide-dir=">" class="m-icon-button in-featured-articles glide-next js-featured-slider-next" aria-label="{{t "Next"}}">
-                  <span class="icon-arrow-right" aria-hidden="true"></span>
-                </button>
-              </div>
+              <button class="m-icon-button in-featured-articles swiper-button-prev js-featured-slider-button" aria-label="{{t "Previous"}}">
+                <span class="icon-arrow-left" aria-hidden="true"></span>
+              </button>
+              <button class="m-icon-button in-featured-articles swiper-button-next js-featured-slider-button" aria-label="{{t "Next"}}">
+                <span class="icon-arrow-right" aria-hidden="true"></span>
+              </button>
             </div>
           {{/if}}
         {{/get}}

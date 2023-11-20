@@ -1,29 +1,33 @@
-import $ from 'jquery'
-import Headroom from 'headroom.js'
-import Glide, { Swipe, Breakpoints } from '@glidejs/glide/dist/glide.modular.esm'
-import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
-import shave from 'shave'
-import AOS from 'aos'
-import * as Typesense from 'typesense/dist/typesense.min'
-import { isRTL, formatDate, isDarkMode, isMobile, getParameterByName } from './helpers'
+import Headroom from "headroom.js";
+import $ from 'jquery';
+import shave from 'shave';
+import Swiper, { FreeMode, A11y } from 'swiper';
+import 'swiper/css';
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+import * as Typesense from 'typesense/dist/typesense.min';
+import {
+    formatDate,
+    getParameterByName,
+    isMobile,
+    isRTL
+} from './helpers';
 
 $(() => {
     if (isRTL()) {
-        $('html')
-            .attr('dir', 'rtl')
-            .addClass('rtl')
+        $('html').attr('dir', 'rtl').addClass('rtl')
     }
 
     const $body = $('body')
     const $header = $('.js-header')
+    const $announcementBar = $('#announcement-bar-root');
     const $openMenu = $('.js-open-menu')
     const $closeMenu = $('.js-close-menu')
     const $menu = $('.js-menu')
     const $toggleSubmenu = $('.js-toggle-submenu')
     const $submenuOption = $('.js-submenu-option')[0]
     const $submenu = $('.js-submenu')
-    const $recentSlider = $('.js-recent-slider')
+    const $recentSlider = $('.js-recent-slider');
     const $openSecondaryMenu = $('.js-open-secondary-menu')
     const $openSearch = $('.js-open-search')
     const $closeSearch = $('.js-close-search')
@@ -36,8 +40,10 @@ $(() => {
     const $mainNav = $('.js-main-nav')
     const $mainNavLeft = $('.js-main-nav-left')
     const $newsletterElements = $('.js-newsletter')
+    const $nativeComments = $('.js-native-comments > div > iframe')[0];
     const currentSavedTheme = localStorage.getItem('theme')
 
+    let fuse = null;
     let postsCollection = null
     let submenuIsOpen = false
     let secondaryMenuTippy = null
@@ -74,33 +80,31 @@ $(() => {
 
     const initTypesense = () => {
         const searchClient = new Typesense.SearchClient({
-            nodes: [
-                {
-                    host: 'blog-search.iota.org',
-                    port: '443',
-                    protocol: 'https'
-                }
-            ],
+            nodes: [{
+                host: 'blog-search.iota.org',
+                port: '443',
+                protocol: 'https',
+            }],
             apiKey: typesenseApiKey,
             connectionTimeoutSeconds: 5,
-            cacheSearchResultsForSeconds: 120
-        })
-        postsCollection = searchClient.collections('shimmer-posts')
+            cacheSearchResultsForSeconds: 120,
+        });
+        postsCollection = searchClient.collections('posts');
     }
 
     const typesenseSearch = async (query) => {
         const params = {
-            query_by: 'title, tags, author, text',
-            query_by_weights: '3, 3, 1, 2',
-            highlight_fields: 'text',
+            query_by: "title, tags, author, text",
+            query_by_weights: "3, 3, 1, 2",
+            highlight_fields: "text",
             highlight_affix_num_tokens: 4,
             per_page: 100,
             typo_tokens_threshold: 10,
-            exclude_fields: 'text',
-            num_typos: 2
-        }
+            exclude_fields: "text",
+            num_typos: 2,
+        };
 
-        return await postsCollection.documents().search({ q: query, ...params })
+        return await postsCollection.documents().search({ q: query, ...params });
     }
 
     const showNotification = (typeNotification) => {
@@ -190,6 +194,7 @@ $(() => {
             showSubmenu()
         } else {
             hideSubmenu()
+
         }
     })
 
@@ -197,7 +202,7 @@ $(() => {
         $search.addClass('opened')
         setTimeout(() => {
             $inputSearch.trigger('focus')
-        }, 400)
+        }, 400);
         toggleScrollVertical()
     })
 
@@ -278,16 +283,12 @@ $(() => {
     })
 
     if (currentSavedTheme) {
-        $('html').attr('data-theme', currentSavedTheme)
-
         if (currentSavedTheme === 'dark') {
-            $toggleDarkMode.attr('checked', true)
+          $toggleDarkMode.each(function() {
+            $(this).attr('checked', true);
+          });
         }
-    } else {
-        if (isDarkMode()) {
-            $toggleDarkMode.attr('checked', true)
-        }
-    }
+      }
 
     if ($header.length > 0) {
         const headroom = new Headroom($header[0], {
@@ -300,7 +301,9 @@ $(() => {
                 if (!isMobile() && secondaryMenuTippy) {
                     const desktopSecondaryMenuTippy = secondaryMenuTippy[0]
 
-                    if (desktopSecondaryMenuTippy && desktopSecondaryMenuTippy.state.isVisible) {
+                    if (
+                        desktopSecondaryMenuTippy && desktopSecondaryMenuTippy.state.isVisible
+                    ) {
                         desktopSecondaryMenuTippy.hide()
                     }
                 }
@@ -309,14 +312,47 @@ $(() => {
         headroom.init()
     }
 
+    if ($announcementBar.length > 0) {
+      $header.addClass('with-announcement-bar');
+  
+      setTimeout(() => {
+        $header.removeAttr('data-animate');
+      }, 500);
+  
+      const barMutationObserver = new MutationObserver((e) => {
+        if (e[0].addedNodes.length) {
+          $announcementBar.detach().prependTo($header);
+          const barHeight = $announcementBar.height();
+          document.documentElement.style.setProperty('--announcement-bar-height', `${barHeight}px`);
+        }
+  
+        if (e[0].removedNodes.length) {
+          document.documentElement.style.setProperty('--announcement-bar-height', '0px');
+        }
+      });
+  
+      const barResizeObserver = new ResizeObserver((entries) => {
+        entries.forEach((entry) => {
+          const barHeight = entry.contentRect.height;
+          document.documentElement.style.setProperty('--announcement-bar-height', `${barHeight}px`);
+        })
+      });
+  
+      barMutationObserver.observe($announcementBar[0], { childList: true });
+      barResizeObserver.observe($announcementBar[0]);
+    } else {
+      setTimeout(() => {
+        $header.removeAttr('data-animate');
+      }, 500);
+    }
+
     if ($recentSlider.length > 0) {
-        const recentSlider = new Glide('.js-recent-slider', {
-            type: 'slider',
-            rewind: false,
-            perView: 4,
-            swipeThreshold: false,
-            dragThreshold: false,
+        const recentSwiper = new Swiper('.js-recent-slider', {
+            modules: [FreeMode, A11y],
+            freeMode: true,
+            slidesPerView: 4,
             gap: 0,
+            a11y: true,
             direction: isRTL() ? 'rtl' : 'ltr',
             breakpoints: {
                 1024: {
@@ -336,23 +372,13 @@ $(() => {
                     dragThreshold: 120,
                     peek: { before: 0, after: 115 }
                 }
+            },
+            on: {
+              init: function() {
+                shave('.js-recent-article-title', 50);
+              }
             }
-        })
-
-        recentSlider.on('mount.after', () => {
-            shave('.js-recent-article-title', 50)
-        })
-
-        recentSlider.mount({ Swipe, Breakpoints })
-    }
-
-    if (typeof disableFadeAnimation === 'undefined' || !disableFadeAnimation) {
-        AOS.init({
-            once: true,
-            startEvent: 'DOMContentLoaded'
-        })
-    } else {
-        $('[data-aos]').addClass('no-aos-animation')
+          });
     }
 
     if ($openSecondaryMenu.length > 0) {
