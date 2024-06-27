@@ -111,8 +111,7 @@
     {{> "notifications"}}
 
     {{!-- Common scripts shared between pages --}}
-    <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.43/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>    <script defer src="{{asset "js/manifest.js"}}"></script>
-    <script defer src="{{asset "js/vendor/content-api.min.js"}}"></script>
+    <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach" type="text/javascript"></script>    <script defer src="{{asset "js/vendor/content-api.min.js"}}"></script>
     <script defer src="{{asset "js/vendor.js"}}"></script>
     <script defer src="{{asset "js/app.js"}}"></script>
     <script type="module"src="{{asset "js/fetchFooter.js"}}"></script>
