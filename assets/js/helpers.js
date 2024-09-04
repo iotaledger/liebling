@@ -1,1 +1,182 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{1:function(t,n,e){"use strict";e.r(n),e.d(n,"isRTL",(function(){return o})),e.d(n,"isMobile",(function(){return a})),e.d(n,"isDarkMode",(function(){return i})),e.d(n,"formatDate",(function(){return r})),e.d(n,"getParameterByName",(function(){return c})),e.d(n,"adjustImageGallery",(function(){return u})),e.d(n,"managePostImages",(function(){return s})),e.d(n,"makeImagesZoomable",(function(){return d}));var o=function(){var t=document.querySelector("html");return["ar","he","fa"].includes(t.getAttribute("lang"))},a=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"768px";return window.matchMedia("(max-width: ".concat(t,")")).matches},i=function(){var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)");return t&&t.matches},r=function(t){return t?new Date(t).toLocaleDateString(document.documentElement.lang,{year:"numeric",month:"long",day:"numeric"}):""},c=function(t,n){n||(n=window.location.href),t=t.replace(/[\[\]]/g,"\\$&");var e=new RegExp("[?&]".concat(t,"(=([^&#]*)|&|#|$)")).exec(n);return e?e[2]?decodeURIComponent(e[2].replace(/\+/g," ")):"":null},u=function(){for(var t=document.querySelectorAll(".kg-gallery-image img"),n=0,e=t.length;n<e;n++){var o=t[n].closest(".kg-gallery-image"),a=t[n].attributes.width.value/t[n].attributes.height.value;o.style.flex="".concat(a," 1 0%")}},s=function(t){t(".js-post-content").find("img").each((function(){t(this).attr("sizes","(max-width: 720px) 720px"),t(this).closest("figure").hasClass("kg-bookmark-card")||t(this).parent().is("a")||t(this).addClass("js-zoomable");var n=t(this).parent().find("figcaption");n?t(this).attr("alt",n.text()):t(this).attr("alt","")}))},d=function(t,n){n(".js-zoomable").on("opened",(function(){setTimeout((function(){var n=t(".medium-zoom-image--opened");n.length>1&&n.last().hide()}),10)}))}},13:function(t,n,e){e(1),e(30),e(32),e(34),e(36),e(38),e(40),t.exports=e(42)},30:function(t,n){},32:function(t,n){},34:function(t,n){},36:function(t,n){},38:function(t,n){},40:function(t,n){},42:function(t,n){}},[[13,0,1]]]);
+"use strict";
+(self["webpackChunkliebling"] = self["webpackChunkliebling"] || []).push([["/js/helpers"],{
+
+/***/ "./js/helpers.js":
+/*!***********************!*\
+  !*** ./js/helpers.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "adjustImageGallery": () => (/* binding */ adjustImageGallery),
+/* harmony export */   "formatDate": () => (/* binding */ formatDate),
+/* harmony export */   "getParameterByName": () => (/* binding */ getParameterByName),
+/* harmony export */   "isMobile": () => (/* binding */ isMobile),
+/* harmony export */   "isRTL": () => (/* binding */ isRTL),
+/* harmony export */   "makeImagesZoomable": () => (/* binding */ makeImagesZoomable),
+/* harmony export */   "managePostImages": () => (/* binding */ managePostImages)
+/* harmony export */ });
+var isRTL = function isRTL() {
+  var $html = document.querySelector('html');
+  return ['ar', 'he', 'fa'].includes($html.getAttribute('lang'));
+};
+var isMobile = function isMobile() {
+  var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '768px';
+  return window.matchMedia("(max-width: ".concat(width, ")")).matches;
+};
+var formatDate = function formatDate(date) {
+  if (date) {
+    return new Date(date).toLocaleDateString(document.documentElement.lang, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+
+  return '';
+};
+var getParameterByName = function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp("[?&]".concat(name, "(=([^&#]*)|&|#|$)"));
+  var results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+};
+var adjustImageGallery = function adjustImageGallery() {
+  var images = document.querySelectorAll('.kg-gallery-image img');
+
+  for (var i = 0, len = images.length; i < len; i++) {
+    var container = images[i].closest('.kg-gallery-image');
+    var width = images[i].attributes.width.value;
+    var height = images[i].attributes.height.value;
+    var ratio = width / height;
+    container.style.flex = "".concat(ratio, " 1 0%");
+  }
+};
+var managePostImages = function managePostImages($) {
+  $('.js-post-content').find('img').each(function () {
+    // TODO: improve sizings for mobile as now is taking images at w1000
+    $(this).attr('sizes', '(max-width: 720px) 720px');
+
+    if (!$(this).closest('figure').hasClass('kg-bookmark-card') && !$(this).closest('figure').hasClass('kg-nft-card') && !$(this).parent().is('a') && !$(this).hasClass('kg-product-card-image') && !$(this).hasClass('kg-audio-thumbnail')) {
+      $(this).addClass('js-zoomable');
+    }
+
+    var $figcaption = $(this).parent().find('figcaption');
+
+    if ($figcaption) {
+      $(this).attr('alt', $figcaption.text());
+    } else {
+      $(this).attr('alt', '');
+    }
+  });
+};
+var makeImagesZoomable = function makeImagesZoomable($, mediumZoom) {
+  var zoom = mediumZoom('.js-zoomable');
+  zoom.on('opened', function () {
+    setTimeout(function () {
+      var $mediumZoomImages = $('.medium-zoom-image--opened');
+
+      if ($mediumZoomImages.length > 1) {
+        $mediumZoomImages.last().hide();
+      }
+    }, 10);
+  });
+};
+
+/***/ }),
+
+/***/ "./sass/tags.scss":
+/*!************************!*\
+  !*** ./sass/tags.scss ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./sass/404.scss":
+/*!***********************!*\
+  !*** ./sass/404.scss ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./sass/app.scss":
+/*!***********************!*\
+  !*** ./sass/app.scss ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./sass/home.scss":
+/*!************************!*\
+  !*** ./sass/home.scss ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./sass/listing.scss":
+/*!***************************!*\
+  !*** ./sass/listing.scss ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./sass/post.scss":
+/*!************************!*\
+  !*** ./sass/post.scss ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./sass/newsletter.scss":
+/*!******************************!*\
+  !*** ./sass/newsletter.scss ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ })
+
+},
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ __webpack_require__.O(0, ["css/newsletter","css/post","css/listing","css/home","css/app","css/404","css/tags"], () => (__webpack_exec__("./js/helpers.js"), __webpack_exec__("./sass/app.scss"), __webpack_exec__("./sass/home.scss"), __webpack_exec__("./sass/listing.scss"), __webpack_exec__("./sass/post.scss"), __webpack_exec__("./sass/newsletter.scss"), __webpack_exec__("./sass/tags.scss"), __webpack_exec__("./sass/404.scss")));
+/******/ var __webpack_exports__ = __webpack_require__.O();
+/******/ }
+]);
