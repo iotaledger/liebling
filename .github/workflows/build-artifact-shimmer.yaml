@@ -1,5 +1,6 @@
 name: Build and create zip - Shimmer Blog
 on:
+  workflow_dispatch:
   push:
     branches:
       - feat/shimmer-blog
