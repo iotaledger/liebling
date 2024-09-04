@@ -1,1 +1,142 @@
-:root{--announcement-bar-height:0px;--show-fade-animation:1}@media only screen and (min-width:48rem){.l-tags-container{display:flex;flex-wrap:wrap;justify-content:center;margin:0 auto;max-width:720px}}@media only screen and (min-width:64rem){.l-tags-container{max-width:1080px}}.m-tag-card{border:1px solid var(--secondary-border-color);border-radius:0;height:180px;margin:0 0 20px;position:relative;transition:all .25s cubic-bezier(.02,.01,.47,1)}.m-tag-card:hover{transform:translateY(-5px)}.m-tag-card:hover:before{box-shadow:var(--article-shadow-hover),0 0 0 transparent}@media only screen and (min-width:48rem){.m-tag-card{margin:0 20px 40px;width:320px}}.m-tag-card:before{background:var(--secondary-subtle-color);box-shadow:var(--article-shadow-normal),0 0 0 transparent;content:"";left:0;opacity:.2;position:absolute;top:0;transition:all .25s cubic-bezier(.02,.01,.47,1);z-index:1}.m-tag-card:before,.m-tag-card__link{border-radius:0;height:100%;width:100%}.m-tag-card__link{background-color:unset;display:block;overflow:hidden;position:relative;z-index:2}.m-tag-card__picture{border-radius:0;height:100%;left:0;-o-object-fit:cover;object-fit:cover;opacity:.7;position:absolute;top:0;width:100%;z-index:1}.m-tag-card__info{color:#fff;left:50%;padding:20px;position:absolute;top:50%;transform:translate(-50%,-50%);width:100%;z-index:2}.m-tag-card__info.no-picture{color:var(--titles-color)}.m-tag-card__name{color:var(--secondary-subtle-color);font-size:1.25rem;letter-spacing:.02em;line-height:1.5rem;margin:0 0 5px;text-align:center}.m-tag-card__counter{display:block;font-size:.75rem;letter-spacing:.02em;line-height:1.25rem;text-align:center;text-transform:uppercase}.tags-template .m-hero{background:url(/assets/images/blog.iota.org-light-tag-header.jpg);background-position:50%;min-height:320px}.tags-template .m-hero img{display:none!important}[data-theme=dark] .tags-template .m-hero{background:url(/assets/images/blog.iota.org-dark-tag-header.jpg);background-position:50%;min-height:320px}[data-theme=dark] .tags-template .m-hero img{display:none!important}@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .tags-template .m-hero{background:url(/assets/images/blog.iota.org-dark-tag-header.jpg);background-position:50%;min-height:320px}:root:not([data-theme=light]) .tags-template .m-hero img{display:none!important}}
+/** Mixins */
+/** Colors */
+/** Config  */
+:root {
+  --announcement-bar-height: 0px;
+  --show-fade-animation: 1;
+}
+
+@media only screen and (min-width: 48rem) {
+  .l-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 720px;
+  }
+}
+@media only screen and (min-width: 64rem) {
+  .l-tags-container {
+    max-width: 1080px;
+  }
+}
+
+.m-tag-card {
+  height: 180px;
+  margin: 0 0 20px;
+  position: relative;
+  border-radius: 0px;
+  border: 1px solid var(--secondary-border-color);
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+.m-tag-card:hover {
+  transform: translateY(-5px);
+}
+.m-tag-card:hover:before {
+  box-shadow: var(--article-shadow-hover), 0 0 0 transparent;
+}
+@media only screen and (min-width: 48rem) {
+  .m-tag-card {
+    width: 320px;
+    margin: 0 20px 40px;
+  }
+}
+.m-tag-card:before {
+  content: "";
+  position: absolute;
+  border-radius: 0px;
+  z-index: 1;
+  box-shadow: var(--article-shadow-normal), 0 0 0 transparent;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  background: var(--secondary-subtle-color);
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.m-tag-card__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+  overflow: hidden;
+  position: relative;
+  background-color: unset;
+  z-index: 2;
+}
+
+.m-tag-card__picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.m-tag-card__info {
+  position: absolute;
+  color: #fff;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 100%;
+}
+.m-tag-card__info.no-picture {
+  color: var(--titles-color);
+}
+
+.m-tag-card__name {
+  margin: 0 0 5px;
+  color: var(--secondary-subtle-color);
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.m-tag-card__counter {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.tags-template .m-hero {
+  background: url("/assets/images/blog.iota.org-light-tag-header.jpg");
+  background-position: center;
+  min-height: 320px;
+}
+.tags-template .m-hero img {
+  display: none !important;
+}
+
+[data-theme=dark] .tags-template .m-hero {
+  background: url("/assets/images/blog.iota.org-dark-tag-header.jpg");
+  background-position: center;
+  min-height: 320px;
+}
+[data-theme=dark] .tags-template .m-hero img {
+  display: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]) .tags-template .m-hero {
+    background: url("/assets/images/blog.iota.org-dark-tag-header.jpg");
+    background-position: center;
+    min-height: 320px;
+  }
+  :root:not([data-theme=light]) .tags-template .m-hero img {
+    display: none !important;
+  }
+}
