@@ -1,5 +1,6 @@
 name: Build and create zip - IOTA Blog
 on:
+  workflow_dispatch:
   push:
     branches:
       - feat/iota-blog
