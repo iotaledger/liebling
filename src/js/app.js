@@ -138,12 +138,16 @@ $(() => {
   });
 
   const openExternalLinksInDifferentTab = () => {
-    let links = $('a')
+    let links = $('a');
     $.each(links, function (index, value) {
         if (!value.href.includes(window.location.hostname)) {
-            value.target = '_blank'
+            if ($(value).parents('#cookieblock', '#cookieblock__banner__wrapper', '#cookieblock__banner').length > 0) {
+                value.target = '_self';
+            } else {
+                value.target = '_blank';
+            }
         }
-    })
+    });
   }
 
   $openSearch.on('click', () => {
