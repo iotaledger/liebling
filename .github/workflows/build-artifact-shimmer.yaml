@@ -9,15 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 14
+      - name: Use Node.js 20
         uses: actions/setup-node@v2
         with:
-            node-version: '14'
-      - name: Install dependencies
-        run: cd src && yarn
-      - name: add webpack
-        run: npm link webpack
-      - name: Build and create zip
+            node-version: '20'
+      - name: Install dependencies && build
+        run: cd src && npm install && npm run build
+      - name: Create zip
         run: zip -r liebling.zip ./* -x 'node_modules/*' -x '*src*'
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
