@@ -14,6 +14,7 @@ body {
     background-color: var(--page-bg-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    @include transition(padding-top linear 0.2s);
 
     &.share-menu-displayed {
         padding-bottom: 45px;
