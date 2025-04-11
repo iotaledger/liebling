@@ -1,10 +1,10 @@
 .m-footer {
     flex-shrink: 0;
-    background: linear-gradient(225deg, #485776 0%, #131f37 100%);
+    background: linear-gradient(225deg, #485776 0%, #171d26 100%);
     background-repeat: no-repeat;
     background-position: left bottom;
-    @include respond-to('medium') {
-        background: url('/assets/images/footer_pattern.svg'), linear-gradient(225deg, #485776 0%, #131f37 100%);
+    @include respond-to("medium") {
+        background: url("/assets/images/footer_pattern.svg"), linear-gradient(225deg, #485776 0%, #171d26 100%);
         background-repeat: no-repeat;
         background-position: left bottom;
     }
@@ -15,12 +15,12 @@
     text-align: center;
     padding: 45px $mobile-space;
 
-    @include respond-to('medium') {
+    @include respond-to("medium") {
         padding: 45px 0;
         max-width: 680px;
         margin: 0 auto;
     }
-    @include respond-to('large') {
+    @include respond-to("large") {
         padding: 45px 0;
         max-width: 1032px;
         margin: 0 auto;
@@ -36,7 +36,7 @@
         flex-wrap: wrap;
 
         li {
-            @include respond-to('medium') {
+            @include respond-to("medium") {
                 margin: 0 5px;
             }
         }
@@ -44,44 +44,55 @@
 }
 .m-footer-grid {
     display: block;
-    @include respond-to('large') {
+    @include respond-to("large") {
         display: grid;
         grid-template-columns: 34% 66%;
     }
 }
-.m-footer-copyright {
-    margin-bottom: 0px;
-    font-size: 0.75rem;
-    line-height: 1.5;
-    text-align: center;
-    letter-spacing: 0.04em;
-    color: #8493ad;
-    @include respond-to('medium') {
-        font-size: 0.875rem;
+.footer-legal-columns-wrapper {
+    padding: 1rem;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--footer-text-color);
+}
+
+.footer-legal-columns-wrapper p {
+    margin: 0.5rem 0;
+    @include respond-to("large") {
+        text-align: start;
     }
-    p {
-        color: #c3d0e4;
-        line-height: 0.5em;
+}
+
+.footer-legal-columns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    @include respond-to("large") {
+        flex-direction: row;
     }
-    span {
-        display: inline;
-    }
-    a {
-        text-decoration: underline;
-        margin-left: 0.25rem;
-        &:hover {
-            color: #00e0ca;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 200px;
+    @include respond-to("large") {
+        align-items: start;
+        span {
+            text-align: start;
         }
     }
+}
 
-    &.jslicense {
-        opacity: 0.7;
-        margin-bottom: 0;
-    }
+.footer-column p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
-#foundationRegisteredAddress span {
-    margin-right: 0.25rem;
-}
+
 .m-footer-social {
     display: flex;
     align-items: center;
