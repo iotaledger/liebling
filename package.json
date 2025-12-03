@@ -97,6 +97,10 @@
       "coinmarketcap_page": {
         "type": "text",
         "default": ""
+      },
+      "telegram_page": {
+        "type": "text",
+        "default": ""
       }
     }
   },

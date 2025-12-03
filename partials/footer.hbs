@@ -26,6 +26,11 @@ This footer template is shared across all the pages.
                 <span class='icon-twitter' aria-hidden='true'></span>
             </a>
           {{/if}}
+          {{#if @custom.telegram_page}}
+            <a href={{ @custom.telegram_page }} target='_blank' rel='noopener' aria-label='Telegram'>
+                <span class='icon-telegram' aria-hidden='true'></span>
+            </a>
+          {{/if}}
           {{#if @custom.discord_page}}
             <a href={{ @custom.discord_page }} target='_blank' rel='noopener' aria-label='Discord'>
                 <span class='icon-discord' aria-hidden='true'></span>
