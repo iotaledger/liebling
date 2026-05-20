@@ -8,9 +8,9 @@ jobs:
   build_create_zip_iota:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
       - name: Use Node.js 20
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@7c12f8017d5436eb855f1ed4399f037a36fbd9e8 # v2
         with:
             node-version: '20'
       - name: Install dependencies && build
@@ -18,9 +18,9 @@ jobs:
       - name: Create zip
         run: zip -r liebling.zip ./* -x 'node_modules/*' -x '*src*'
       - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
-        with: 
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
           name: IOTA_Blog
           path: liebling.zip
       - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
