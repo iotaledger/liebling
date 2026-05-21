@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - feat/iota-blog
+      - iota-theme
 jobs:
   build_create_zip_iota:
     runs-on: ubuntu-latest
